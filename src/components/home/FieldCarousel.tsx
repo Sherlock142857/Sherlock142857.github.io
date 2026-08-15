@@ -9,11 +9,12 @@ import s from "./FieldCarousel.module.css";
 interface FieldCarouselProps {
   fields: Field[];
   frameRef: RefObject<HTMLDivElement>;
+  initialIndex?: number;
   onActivate: (fieldId: string) => void;
 }
 
-export function FieldCarousel({ fields, frameRef, onActivate }: FieldCarouselProps) {
-  const carousel = useFieldCarousel(fields);
+export function FieldCarousel({ fields, frameRef, initialIndex = 0, onActivate }: FieldCarouselProps) {
+  const carousel = useFieldCarousel(fields, initialIndex);
   const { activeField } = carousel;
 
   const handleActivate = () => onActivate(activeField.id);

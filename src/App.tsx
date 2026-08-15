@@ -1,6 +1,6 @@
-import { useEffect } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { HomeTransition } from "./components/home/HomeTransition";
-import { getFieldById } from "./data/fields";
+import { fields, getFieldById } from "./data/fields";
 import { site } from "./data/site";
 import { useHashRoute } from "./hooks/useHashRoute";
 import { usePageTransition } from "./hooks/usePageTransition";
@@ -11,8 +11,24 @@ export default function App() {
   const [route, navigate] = useHashRoute();
   const { transition, enter, exit, clear, homeContentRef, homeImageRef, detailAnchorRef } =
     usePageTransition(navigate);
+  const [lastFieldId, setLastFieldId] = useState<string | null>(null);
 
   const field = route.name === "field" ? getFieldById(route.fieldId) : undefined;
+
+  // Remember the field being opened so the homepage can restore it on return,
+  // keeping the reverse transition anchored to the same image.
+  const handleEnter = useCallback(
+    (fieldId: string, fromRect: DOMRect) => {
+      setLastFieldId(fieldId);
+      enter(fieldId, fromRect);
+    },
+    [enter]
+  );
+
+  const initialIndex = Math.max(
+    0,
+    fields.findIndex((entry) => entry.id === lastFieldId)
+  );
 
   useEffect(() => {
     if (route.name === "field" && !field) {
@@ -25,7 +41,12 @@ export default function App() {
   return (
     <>
       {route.name === "home" && (
-        <HomePage homeContentRef={homeContentRef} homeImageRef={homeImageRef} onEnter={enter} />
+        <HomePage
+          homeContentRef={homeContentRef}
+          homeImageRef={homeImageRef}
+          initialIndex={initialIndex}
+          onEnter={handleEnter}
+        />
       )}
       {route.name === "field" && field && (
         <FieldPage field={field} detailAnchorRef={detailAnchorRef} onExit={exit} />

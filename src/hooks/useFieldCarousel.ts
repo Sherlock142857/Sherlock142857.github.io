@@ -27,7 +27,7 @@ export interface FieldCarouselApi {
  * Single source of truth for the homepage carousel. The title and image columns
  * are driven by one `slot` value, so they can never fall out of sync.
  */
-export function useFieldCarousel(fields: Field[]): FieldCarouselApi {
+export function useFieldCarousel(fields: Field[], initialIndex = 0): FieldCarouselApi {
   const n = fields.length;
   const reduced = useReducedMotion();
 
@@ -35,8 +35,10 @@ export function useFieldCarousel(fields: Field[]): FieldCarouselApi {
   const titleTrackRef = useRef<HTMLDivElement>(null);
   const imageTrackRef = useRef<HTMLDivElement>(null);
 
-  // Start in the middle copy of the tripled list so the loop has no visible end.
-  const [slot, setSlot] = useState(n);
+  // Start in the middle copy of the tripled list so the loop has no visible
+  // end. `initialIndex` restores the field the visitor was viewing on return.
+  const initialSlot = n + (((initialIndex % n) + n) % n);
+  const [slot, setSlot] = useState(initialSlot);
   const [slotHeight, setSlotHeight] = useState(0);
   const [snap, setSnap] = useState(false);
   const [paused, setPaused] = useState(false);
