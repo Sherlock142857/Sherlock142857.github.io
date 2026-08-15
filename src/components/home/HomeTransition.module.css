@@ -1,0 +1,78 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  pointer-events: auto;
+}
+
+.backdrop {
+  position: absolute;
+  inset: 0;
+  background: var(--color-bg);
+  opacity: 0;
+}
+
+.stage {
+  position: absolute;
+  will-change: transform, opacity;
+}
+
+.stageImage {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.fill {
+  position: absolute;
+  inset: 0;
+  background: var(--color-ink);
+  opacity: 0;
+}
+
+.bracket {
+  position: absolute;
+  top: 0;
+  width: 50%;
+  height: 100%;
+}
+
+.bracketLeft {
+  left: 0;
+  border-left: var(--bracket-stroke) solid var(--color-frame);
+  border-top: var(--bracket-stroke) solid var(--color-frame);
+  border-bottom: var(--bracket-stroke) solid var(--color-frame);
+  transform-origin: left center;
+}
+
+.bracketRight {
+  right: 0;
+  border-right: var(--bracket-stroke) solid var(--color-frame);
+  border-top: var(--bracket-stroke) solid var(--color-frame);
+  border-bottom: var(--bracket-stroke) solid var(--color-frame);
+  transform-origin: right center;
+}
+
+.wedge {
+  position: absolute;
+  width: clamp(140px, 26vw, 320px);
+  height: clamp(140px, 26vw, 320px);
+  background: var(--color-ink);
+}
+
+.wedgeLeft {
+  clip-path: polygon(0 0, 0 100%, 100% 50%);
+}
+
+.wedgeRight {
+  clip-path: polygon(100% 0, 100% 100%, 0 50%);
+}
+
+.anchor {
+  position: absolute;
+  width: var(--anchor-size);
+  height: var(--anchor-size);
+  background: var(--color-ink);
+}
