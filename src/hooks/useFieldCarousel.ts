@@ -1,9 +1,7 @@
-import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useCallback, useLayoutEffect, useRef, useState } from "react";
 import type { RefObject, TransitionEvent } from "react";
 import { computeTrackY } from "../animations/carousel";
-import { CAROUSEL } from "../animations/timing";
 import type { Field } from "../types/content";
-import { useReducedMotion } from "./useReducedMotion";
 
 export interface FieldCarouselApi {
   viewportRef: RefObject<HTMLDivElement>;
@@ -19,17 +17,15 @@ export interface FieldCarouselApi {
   advance: (dir: 1 | -1) => void;
   goTo: (index: number) => void;
   onTrackTransitionEnd: (event: TransitionEvent<HTMLDivElement>) => void;
-  onHoverStart: () => void;
-  onHoverEnd: () => void;
 }
 
 /**
  * Single source of truth for the homepage carousel. The title and image columns
- * are driven by one `slot` value, so they can never fall out of sync.
+ * are driven by one `slot` value, so they can never fall out of sync. There is
+ * no autoplay — the carousel is advanced by mouse wheel, keyboard, or click.
  */
 export function useFieldCarousel(fields: Field[], initialIndex = 0): FieldCarouselApi {
   const n = fields.length;
-  const reduced = useReducedMotion();
 
   const viewportRef = useRef<HTMLDivElement>(null);
   const titleTrackRef = useRef<HTMLDivElement>(null);
@@ -41,12 +37,9 @@ export function useFieldCarousel(fields: Field[], initialIndex = 0): FieldCarous
   const [slot, setSlot] = useState(initialSlot);
   const [slotHeight, setSlotHeight] = useState(0);
   const [snap, setSnap] = useState(false);
-  const [paused, setPaused] = useState(false);
 
   const slotRef = useRef(slot);
   const animatingRef = useRef(false);
-  const pausedRef = useRef(false);
-  pausedRef.current = paused;
 
   // Measure the slot height (the viewport is exactly three slots tall). A layout
   // effect keeps the first paint correctly positioned instead of animating in.
@@ -108,18 +101,6 @@ export function useFieldCarousel(fields: Field[], initialIndex = 0): FieldCarous
     [n]
   );
 
-  const onHoverStart = useCallback(() => setPaused(true), []);
-  const onHoverEnd = useCallback(() => setPaused(false), []);
-
-  // Autoplay — paused for hover and for users who prefer reduced motion.
-  useEffect(() => {
-    if (reduced || paused) return;
-    const id = window.setInterval(() => {
-      if (!animatingRef.current && !pausedRef.current) advance(1);
-    }, CAROUSEL.autoplayDelay * 1000);
-    return () => window.clearInterval(id);
-  }, [reduced, paused, advance]);
-
   const y = computeTrackY(slot, slotHeight);
 
   return {
@@ -136,7 +117,5 @@ export function useFieldCarousel(fields: Field[], initialIndex = 0): FieldCarous
     advance,
     goTo,
     onTrackTransitionEnd,
-    onHoverStart,
-    onHoverEnd,
   };
 }

@@ -1,3 +1,4 @@
+import { useEffect, useRef } from "react";
 import type { RefObject } from "react";
 import { useFieldCarousel } from "../../hooks/useFieldCarousel";
 import type { Field } from "../../types/content";
@@ -15,26 +16,38 @@ interface FieldCarouselProps {
 
 export function FieldCarousel({ fields, frameRef, initialIndex = 0, onActivate }: FieldCarouselProps) {
   const carousel = useFieldCarousel(fields, initialIndex);
-  const { activeField } = carousel;
+  const sectionRef = useRef<HTMLElement>(null);
+  const { activeField, advance } = carousel;
 
   const handleActivate = () => onActivate(activeField.id);
 
+  // Mouse wheel advances the carousel (desktop-first; on small screens the page
+  // scrolls normally). Attached non-passively so preventDefault works.
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+    const onWheel = (event: WheelEvent) => {
+      if (window.innerWidth < 760) return;
+      event.preventDefault();
+      advance(event.deltaY > 0 ? 1 : -1);
+    };
+    el.addEventListener("wheel", onWheel, { passive: false });
+    return () => el.removeEventListener("wheel", onWheel);
+  }, [advance]);
+
   return (
     <section
+      ref={sectionRef}
       className={s.carousel}
       aria-label="Fields"
       tabIndex={0}
-      onMouseEnter={carousel.onHoverStart}
-      onMouseLeave={carousel.onHoverEnd}
-      onFocus={carousel.onHoverStart}
-      onBlur={carousel.onHoverEnd}
       onKeyDown={(event) => {
         if (event.key === "ArrowDown") {
           event.preventDefault();
-          carousel.advance(1);
+          advance(1);
         } else if (event.key === "ArrowUp") {
           event.preventDefault();
-          carousel.advance(-1);
+          advance(-1);
         } else if (event.key === "Enter") {
           event.preventDefault();
           handleActivate();
