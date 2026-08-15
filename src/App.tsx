@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
+import { defaultDiamondSpec, diamondSpecFromRect, type DiamondSpec } from "./animations/geometry";
 import { HomeTransition } from "./components/home/HomeTransition";
 import { fields, getFieldById } from "./data/fields";
 import { site } from "./data/site";
@@ -12,14 +13,17 @@ export default function App() {
   const { transition, enter, exit, clear, homeContentRef, homeImageRef, detailAnchorRef } =
     usePageTransition(navigate);
   const [lastFieldId, setLastFieldId] = useState<string | null>(null);
+  const [diamond, setDiamond] = useState<DiamondSpec | null>(null);
 
   const field = route.name === "field" ? getFieldById(route.fieldId) : undefined;
 
-  // Remember the field being opened so the homepage can restore it on return,
-  // keeping the reverse transition anchored to the same image.
+  // Remember the field being opened and its geometry so the homepage can
+  // restore it on return, keeping the reverse transition anchored to the same
+  // image and diamond.
   const handleEnter = useCallback(
     (fieldId: string, fromRect: DOMRect) => {
       setLastFieldId(fieldId);
+      setDiamond(diamondSpecFromRect(fromRect));
       enter(fieldId, fromRect);
     },
     [enter]
@@ -49,14 +53,18 @@ export default function App() {
         />
       )}
       {route.name === "field" && field && (
-        <FieldPage field={field} detailAnchorRef={detailAnchorRef} onExit={exit} />
+        <FieldPage
+          field={field}
+          diamond={diamond ?? defaultDiamondSpec()}
+          detailAnchorRef={detailAnchorRef}
+          onExit={exit}
+        />
       )}
       {transition && (
         <HomeTransition
           key={`${transition.direction}-${transition.fieldId}`}
           transition={transition}
           homeContentRef={homeContentRef}
-          homeImageRef={homeImageRef}
           detailAnchorRef={detailAnchorRef}
           onNavigateToField={(fieldId) => navigate({ name: "field", fieldId })}
           onNavigateHome={() => navigate({ name: "home" })}

@@ -12,67 +12,30 @@
   opacity: 0;
 }
 
-.stage {
+.image {
   position: absolute;
-  will-change: transform, opacity;
-}
-
-.stageImage {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
   object-fit: cover;
 }
 
-.fill {
+.rotator {
   position: absolute;
-  inset: 0;
-  background: var(--color-ink);
-  opacity: 0;
+  width: 0;
+  height: 0;
+  will-change: transform;
 }
 
-.bracket {
+.geo {
   position: absolute;
-  top: 0;
-  width: 50%;
-  height: 100%;
 }
 
-.bracketLeft {
-  left: 0;
-  border-left: var(--bracket-stroke) solid var(--color-frame);
-  border-top: var(--bracket-stroke) solid var(--color-frame);
-  border-bottom: var(--bracket-stroke) solid var(--color-frame);
-  transform-origin: left center;
+.interior {
+  fill: var(--color-ink);
 }
 
-.bracketRight {
-  right: 0;
-  border-right: var(--bracket-stroke) solid var(--color-frame);
-  border-top: var(--bracket-stroke) solid var(--color-frame);
-  border-bottom: var(--bracket-stroke) solid var(--color-frame);
-  transform-origin: right center;
-}
-
-.wedge {
-  position: absolute;
-  width: clamp(140px, 26vw, 320px);
-  height: clamp(140px, 26vw, 320px);
-  background: var(--color-ink);
-}
-
-.wedgeLeft {
-  clip-path: polygon(0 0, 0 100%, 100% 50%);
-}
-
-.wedgeRight {
-  clip-path: polygon(100% 0, 100% 100%, 0 50%);
-}
-
-.anchor {
-  position: absolute;
-  width: var(--anchor-size);
-  height: var(--anchor-size);
-  background: var(--color-ink);
+.chevron {
+  fill: none;
+  stroke: var(--color-frame);
+  stroke-width: 2;
+  stroke-linecap: square;
+  stroke-linejoin: miter;
 }

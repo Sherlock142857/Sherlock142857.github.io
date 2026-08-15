@@ -14,7 +14,6 @@ export const EASE_LINEAR = "none";
 
 export const CAROUSEL = {
   duration: 0.6,
-  autoplayDelay: 3.6,
   ease: EASE_IN_OUT,
 } as const;
 
@@ -23,8 +22,8 @@ export const TRANSITION = {
   merge: 0.55,
   fill: 0.45,
   rotate: 0.9,
-  split: 0.6,
-  anchor: 0.55,
+  split: 0.7,
+  settle: 0.55,
   reveal: 0.4,
   ease: EASE_IN_OUT,
   rotateEase: EASE_LINEAR,

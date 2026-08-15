@@ -31,7 +31,7 @@
   --space-3xl: 6rem;
 
   /* Layout */
-  --max-width: 1500px;
+  --max-width: 1760px;
   --gutter: clamp(1rem, 4vw, 3.5rem);
   --page-pad-y: clamp(1.5rem, 4vh, 3.5rem);
 
