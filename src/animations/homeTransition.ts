@@ -146,9 +146,12 @@ export function playEnterTransition(params: EnterParams): gsap.core.Timeline {
   );
   t += TRANSITION.fill;
 
-  // Precise 180° rotation around the diamond center.
+  // Precise 180° rotation around the diamond center. The diamond is invariant
+  // under a half-turn, so we snap the rotator back to upright afterwards — this
+  // keeps every later stage (split, settle) in the unrotated coordinate frame.
   tl.to(rotator, { rotation: 180, duration: TRANSITION.rotate, ease: EASE_LINEAR }, t);
   t += TRANSITION.rotate;
+  tl.set(rotator, { rotation: 0 }, t);
 
   // Split: mount the detail page, then fly the two chevrons to the page edges.
   tl.call(onNavigateToField, undefined, t)
@@ -255,7 +258,7 @@ export function playExitTransition(params: ExitParams): gsap.core.Timeline {
   gsap.set(overlay, { opacity: 1 });
   gsap.set(backdrop, { opacity: 1 });
   gsap.set(image, { opacity: 0 });
-  gsap.set(rotator, { rotation: 180 });
+  gsap.set(rotator, { rotation: 0 });
   gsap.set(interior, { opacity: 1, x: anchorStart.x, y: anchorStart.y, scale: 1 });
   setLine(leftTop, frameL.top);
   setLine(leftBottom, frameL.bottom);
@@ -295,9 +298,11 @@ export function playExitTransition(params: ExitParams): gsap.core.Timeline {
     );
   t += TRANSITION.split;
 
-  // Rotate back to upright.
-  tl.to(rotator, { rotation: 0, duration: TRANSITION.rotate, ease: EASE_LINEAR }, t);
+  // Rotate back in the opposite direction, then snap to upright (invisible for
+  // the half-turn-symmetric diamond) so the unmerge stage stays unrotated.
+  tl.to(rotator, { rotation: -180, duration: TRANSITION.rotate, ease: EASE_LINEAR }, t);
   t += TRANSITION.rotate;
+  tl.set(rotator, { rotation: 0 }, t);
 
   // The fill clears and the image reappears.
   tl.to(interior, { opacity: 0, duration: TRANSITION.fill }, t).to(
