@@ -1,0 +1,27 @@
+# Dependencies
+node_modules
+
+# Build output
+dist
+dist-ssr
+
+# Local / environment
+*.local
+.env
+.env.*
+!.env.example
+
+# Editor / OS
+.DS_Store
+*.log
+.idea
+.vscode/*
+
+# Vite
+.vite
+
+# Test / coverage
+coverage
+
+# TypeScript incremental build info
+*.tsbuildinfo
