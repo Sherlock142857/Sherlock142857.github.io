@@ -4,7 +4,8 @@ import { computeTrackY } from "../animations/carousel";
 import type { Field } from "../types/content";
 
 export interface FieldCarouselApi {
-  viewportRef: RefObject<HTMLDivElement>;
+  titleViewportRef: RefObject<HTMLDivElement>;
+  imageViewportRef: RefObject<HTMLDivElement>;
   titleTrackRef: RefObject<HTMLDivElement>;
   imageTrackRef: RefObject<HTMLDivElement>;
   slot: number;
@@ -12,7 +13,8 @@ export interface FieldCarouselApi {
   activeField: Field;
   previous: Field;
   next: Field;
-  y: number;
+  titleY: number;
+  imageY: number;
   snap: boolean;
   advance: (dir: 1 | -1) => void;
   goTo: (index: number) => void;
@@ -21,13 +23,15 @@ export interface FieldCarouselApi {
 
 /**
  * Single source of truth for the homepage carousel. The title and image columns
- * are driven by one `slot` value, so they can never fall out of sync. There is
- * no autoplay — the carousel is advanced by mouse wheel, keyboard, or click.
+ * are driven by one `slot` value, so they advance together; the title column
+ * shows five rows (tighter spacing) while the image column shows three, so only
+ * the active title sits level with the active image.
  */
 export function useFieldCarousel(fields: Field[], initialIndex = 0): FieldCarouselApi {
   const n = fields.length;
 
-  const viewportRef = useRef<HTMLDivElement>(null);
+  const titleViewportRef = useRef<HTMLDivElement>(null);
+  const imageViewportRef = useRef<HTMLDivElement>(null);
   const titleTrackRef = useRef<HTMLDivElement>(null);
   const imageTrackRef = useRef<HTMLDivElement>(null);
 
@@ -35,21 +39,28 @@ export function useFieldCarousel(fields: Field[], initialIndex = 0): FieldCarous
   // end. `initialIndex` restores the field the visitor was viewing on return.
   const initialSlot = n + (((initialIndex % n) + n) % n);
   const [slot, setSlot] = useState(initialSlot);
-  const [slotHeight, setSlotHeight] = useState(0);
+  const [titleSlotHeight, setTitleSlotHeight] = useState(0);
+  const [imageSlotHeight, setImageSlotHeight] = useState(0);
   const [snap, setSnap] = useState(false);
 
   const slotRef = useRef(slot);
   const animatingRef = useRef(false);
 
-  // Measure the slot height (the viewport is exactly three slots tall). A layout
-  // effect keeps the first paint correctly positioned instead of animating in.
+  // Measure each column's slot height (the title viewport is five slots tall,
+  // the image viewport three). A layout effect keeps the first paint correct.
   useLayoutEffect(() => {
-    const el = viewportRef.current;
-    if (!el) return;
-    const measure = () => setSlotHeight(el.clientHeight / 3);
+    const measure = () => {
+      if (titleViewportRef.current) {
+        setTitleSlotHeight(titleViewportRef.current.clientHeight / 5);
+      }
+      if (imageViewportRef.current) {
+        setImageSlotHeight(imageViewportRef.current.clientHeight / 3);
+      }
+    };
     measure();
     const observer = new ResizeObserver(measure);
-    observer.observe(el);
+    if (titleViewportRef.current) observer.observe(titleViewportRef.current);
+    if (imageViewportRef.current) observer.observe(imageViewportRef.current);
     return () => observer.disconnect();
   }, []);
 
@@ -101,10 +112,12 @@ export function useFieldCarousel(fields: Field[], initialIndex = 0): FieldCarous
     [n]
   );
 
-  const y = computeTrackY(slot, slotHeight);
+  const titleY = computeTrackY(slot, titleSlotHeight, 2);
+  const imageY = computeTrackY(slot, imageSlotHeight, 1);
 
   return {
-    viewportRef,
+    titleViewportRef,
+    imageViewportRef,
     titleTrackRef,
     imageTrackRef,
     slot,
@@ -112,7 +125,8 @@ export function useFieldCarousel(fields: Field[], initialIndex = 0): FieldCarous
     activeField: fields[activeIndex],
     previous: fields[(activeIndex - 1 + n) % n],
     next: fields[(activeIndex + 1) % n],
-    y,
+    titleY,
+    imageY,
     snap,
     advance,
     goTo,

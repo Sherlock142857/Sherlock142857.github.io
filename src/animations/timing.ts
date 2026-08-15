@@ -9,7 +9,7 @@
 export const EASE_OUT = "cubic-bezier(0.22, 1, 0.36, 1)";
 export const EASE_IN = "cubic-bezier(0.55, 0.06, 0.68, 0.19)";
 export const EASE_IN_OUT = "cubic-bezier(0.65, 0, 0.35, 1)";
-/** Linear — used for the mechanical 360° rotation. */
+/** Linear — used for the mechanical 180° rotation. */
 export const EASE_LINEAR = "none";
 
 export const CAROUSEL = {
@@ -21,7 +21,7 @@ export const TRANSITION = {
   hideHome: 0.5,
   merge: 0.55,
   fill: 0.45,
-  rotate: 0.9,
+  rotate: 0.55,
   split: 0.7,
   settle: 0.55,
   reveal: 0.4,

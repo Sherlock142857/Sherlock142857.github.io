@@ -57,9 +57,9 @@ export function FieldCarousel({ fields, frameRef, initialIndex = 0, onActivate }
       <FieldTitleColumn
         fields={fields}
         slot={carousel.slot}
-        viewportRef={carousel.viewportRef}
+        viewportRef={carousel.titleViewportRef}
         trackRef={carousel.titleTrackRef}
-        y={carousel.y}
+        y={carousel.titleY}
         snap={carousel.snap}
         onTransitionEnd={carousel.onTrackTransitionEnd}
         onSelect={carousel.goTo}
@@ -68,9 +68,10 @@ export function FieldCarousel({ fields, frameRef, initialIndex = 0, onActivate }
       <FieldImageColumn
         fields={fields}
         slot={carousel.slot}
+        viewportRef={carousel.imageViewportRef}
         trackRef={carousel.imageTrackRef}
         frameRef={frameRef}
-        y={carousel.y}
+        y={carousel.imageY}
         snap={carousel.snap}
         onTransitionEnd={carousel.onTrackTransitionEnd}
         onSelect={carousel.goTo}

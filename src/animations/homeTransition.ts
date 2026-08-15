@@ -146,8 +146,8 @@ export function playEnterTransition(params: EnterParams): gsap.core.Timeline {
   );
   t += TRANSITION.fill;
 
-  // Precise 360° rotation around the diamond center.
-  tl.to(rotator, { rotation: 360, duration: TRANSITION.rotate, ease: EASE_LINEAR }, t);
+  // Precise 180° rotation around the diamond center.
+  tl.to(rotator, { rotation: 180, duration: TRANSITION.rotate, ease: EASE_LINEAR }, t);
   t += TRANSITION.rotate;
 
   // Split: mount the detail page, then fly the two chevrons to the page edges.
@@ -255,7 +255,7 @@ export function playExitTransition(params: ExitParams): gsap.core.Timeline {
   gsap.set(overlay, { opacity: 1 });
   gsap.set(backdrop, { opacity: 1 });
   gsap.set(image, { opacity: 0 });
-  gsap.set(rotator, { rotation: 360 });
+  gsap.set(rotator, { rotation: 180 });
   gsap.set(interior, { opacity: 1, x: anchorStart.x, y: anchorStart.y, scale: 1 });
   setLine(leftTop, frameL.top);
   setLine(leftBottom, frameL.bottom);

@@ -182,11 +182,14 @@ components (how to show it). Content never lives inside visual components.
   easings. The CSS custom properties in `src/styles/variables.css` mirror these
   values so CSS transitions and GSAP timelines stay in lockstep.
 - The **carousel** is a single `slot` value driving both the title and image
-  tracks with the same transform, so they can never fall out of sync. It is
-  rendered as a tripled list to create an infinite loop with no visible end.
+  tracks, so they can never fall out of sync. The title column shows five tight
+  rows, the image column three, and it is advanced by mouse wheel, keyboard, or
+  click (no autoplay). It is rendered as a tripled list to create an infinite
+  loop with no visible end.
 - The **page transition** is one GSAP timeline in
   `src/animations/homeTransition.ts`:
-  hide homepage → brackets merge into a square → black fill → 360° rotation →
-  split → small central anchor. The return direction plays the exact inverse.
+  hide homepage → the two right-angle chevrons merge into a diamond → black
+  fill → 180° rotation → split into a left chevron, a right chevron, and the
+  solid interior. The return direction plays the exact inverse.
 - `useReducedMotion` plus a `prefers-reduced-motion` CSS block replace elaborate
   motion with direct page changes when requested.

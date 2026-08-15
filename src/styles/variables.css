@@ -14,8 +14,8 @@
   /* Type scale (desktop) */
   --fs-hero: clamp(3rem, 9vw, 8rem);
   --fs-title: clamp(2rem, 5.5vw, 4.5rem);
-  --fs-carousel-active: clamp(2.25rem, 4.5vw, 4rem);
-  --fs-carousel-side: clamp(1.25rem, 2.5vw, 2rem);
+  --fs-carousel-active: clamp(1.8rem, 2.6vw, 2.9rem);
+  --fs-carousel-side: clamp(1.1rem, 1.8vw, 1.5rem);
   --fs-section: clamp(1.5rem, 3vw, 2.25rem);
   --fs-body: 1.0625rem;
   --fs-meta: 0.75rem;
@@ -37,9 +37,9 @@
 
   /* Carousel geometry */
   --carousel-slot: 17rem;
+  --carousel-title-slot: 9rem;
   --carousel-image-w: 14rem;
   --carousel-image-h: 17rem;
-  --carousel-bracket-space: 3.5rem;
 
   /* Geometry */
   --bracket-stroke: 2px;
@@ -60,9 +60,9 @@
 @media (max-width: 760px) {
   :root {
     --carousel-slot: 10rem;
+    --carousel-title-slot: 6rem;
     --carousel-image-w: 8.5rem;
     --carousel-image-h: 10rem;
-    --carousel-bracket-space: 2.5rem;
     --space-2xl: 2.5rem;
   }
 }

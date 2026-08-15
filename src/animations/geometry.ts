@@ -12,7 +12,7 @@ export const BRACKET_STROKE = 2;
 /** Diamond half-diagonal as a fraction of the image height. */
 export const DIAMOND_RATIO = 0.55;
 /** Homepage bracket gap as a fraction of the half-diagonal. */
-export const GAP_RATIO = 0.3;
+export const GAP_RATIO = 0.8;
 /** Detail-page framing brackets' distance from the viewport edge (px). */
 export const FRAME_PAD = 40;
 /** Framing brackets are this much larger than the diamond brackets. */

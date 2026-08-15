@@ -27,7 +27,7 @@ interface HomeTransitionProps {
 /**
  * Full-screen overlay that owns the geometric homepage ⇄ detail transition:
  * two right-angle chevrons merge into a diamond, the interior fills black and
- * rotates 360°, then splits into a left chevron, a right chevron, and the solid
+ * rotates 180°, then splits into a left chevron, a right chevron, and the solid
  * interior. The exit direction plays the exact inverse.
  */
 export function HomeTransition({

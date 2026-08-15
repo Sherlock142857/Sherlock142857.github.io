@@ -7,6 +7,7 @@ import s from "./FieldCarousel.module.css";
 interface FieldImageColumnProps {
   fields: Field[];
   slot: number;
+  viewportRef: RefObject<HTMLDivElement>;
   trackRef: RefObject<HTMLDivElement>;
   frameRef: RefObject<HTMLDivElement>;
   y: number;
@@ -19,6 +20,7 @@ interface FieldImageColumnProps {
 export function FieldImageColumn({
   fields,
   slot,
+  viewportRef,
   trackRef,
   frameRef,
   y,
@@ -34,7 +36,7 @@ export function FieldImageColumn({
   };
 
   return (
-    <div className={`${s.column} ${s.imageColumn}`}>
+    <div className={`${s.column} ${s.imageColumn}`} ref={viewportRef}>
       <div className={s.track} ref={trackRef} style={trackStyle} onTransitionEnd={onTransitionEnd}>
         {triple.map((field, i) => {
           const isActive = i === slot;

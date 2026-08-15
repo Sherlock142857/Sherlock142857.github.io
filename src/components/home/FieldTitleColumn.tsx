@@ -33,11 +33,11 @@ export function FieldTitleColumn({
   };
 
   return (
-    <div className={s.column} ref={viewportRef}>
+    <div className={`${s.column} ${s.titleColumn}`} ref={viewportRef}>
       <div className={s.track} ref={trackRef} style={trackStyle} onTransitionEnd={onTransitionEnd}>
         {triple.map((field, i) => {
           const isActive = i === slot;
-          const visible = i === slot - 1 || i === slot || i === slot + 1;
+          const visible = i >= slot - 2 && i <= slot + 2;
           return (
             <button
               key={i}

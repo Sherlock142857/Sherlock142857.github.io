@@ -23,12 +23,12 @@ export function GeometryFrame({ field, frameRef, onClick }: GeometryFrameProps) 
       </button>
       <svg
         className={s.brackets}
-        viewBox="-1.4 -1.1 2.8 2.2"
+        viewBox="-1.9 -1.1 3.8 2.2"
         preserveAspectRatio="none"
         aria-hidden="true"
       >
-        <path className={s.chevron} d="M -0.3 -1 L -1.3 0 L -0.3 1" />
-        <path className={s.chevron} d="M 0.3 -1 L 1.3 0 L 0.3 1" />
+        <path className={s.chevron} d="M -0.8 -1 L -1.8 0 L -0.8 1" />
+        <path className={s.chevron} d="M 0.8 -1 L 1.8 0 L 0.8 1" />
       </svg>
     </div>
   );
