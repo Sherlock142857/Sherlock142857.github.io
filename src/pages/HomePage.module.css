@@ -1,0 +1,16 @@
+.home {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100dvh;
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding: var(--page-pad-y) var(--gutter);
+  gap: var(--space-xl);
+}
+
+.main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 0;
+}

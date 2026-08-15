@@ -1,0 +1,53 @@
+/* Shared editorial type utilities. Components layer their own spacing on top. */
+
+.t-display {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: var(--fs-hero);
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  text-wrap: balance;
+}
+
+.t-title {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: var(--fs-title);
+  line-height: 0.98;
+  letter-spacing: -0.025em;
+  text-transform: uppercase;
+  text-wrap: balance;
+}
+
+.t-section {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: var(--fs-section);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+
+.t-meta {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: var(--fs-meta);
+  line-height: 1.5;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.t-body {
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  line-height: 1.7;
+  font-weight: 400;
+}
+
+.t-subtitle {
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  line-height: 1.6;
+  font-weight: 400;
+  color: var(--color-ink-soft);
+}

@@ -1,0 +1,44 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--space-lg);
+}
+
+.name {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(1.25rem, 2.4vw, 2rem);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.identity {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.2rem;
+  text-align: right;
+}
+
+.line {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: var(--fs-meta);
+  line-height: 1.5;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-ink-soft);
+  white-space: nowrap;
+}
+
+.contact {
+  color: var(--color-ink);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+.contact:hover {
+  opacity: 0.6;
+}

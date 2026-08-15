@@ -1,0 +1,11 @@
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.corner {
+  display: block;
+  width: 0.5rem;
+  height: 0.5rem;
+}

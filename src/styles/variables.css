@@ -1,0 +1,68 @@
+:root {
+  /* Color — strong black / white / grayscale hierarchy */
+  --color-bg: #f4f4f1;
+  --color-surface: #ecece8;
+  --color-ink: #0a0a0a;
+  --color-ink-soft: #6d6d68;
+  --color-ink-faint: #a9a9a3;
+  --color-frame: #0a0a0a;
+
+  /* Typography */
+  --font-display: "Space Grotesk", "Inter", system-ui, -apple-system, sans-serif;
+  --font-body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  /* Type scale (desktop) */
+  --fs-hero: clamp(3rem, 9vw, 8rem);
+  --fs-title: clamp(2rem, 5.5vw, 4.5rem);
+  --fs-carousel-active: clamp(2.25rem, 4.5vw, 4rem);
+  --fs-carousel-side: clamp(1.25rem, 2.5vw, 2rem);
+  --fs-section: clamp(1.5rem, 3vw, 2.25rem);
+  --fs-body: 1.0625rem;
+  --fs-meta: 0.75rem;
+
+  /* Spacing */
+  --space-2xs: 0.25rem;
+  --space-xs: 0.5rem;
+  --space-sm: 0.75rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2.5rem;
+  --space-2xl: 4rem;
+  --space-3xl: 6rem;
+
+  /* Layout */
+  --max-width: 1500px;
+  --gutter: clamp(1rem, 4vw, 3.5rem);
+  --page-pad-y: clamp(1.5rem, 4vh, 3.5rem);
+
+  /* Carousel geometry */
+  --carousel-slot: 17rem;
+  --carousel-image-w: 14rem;
+  --carousel-image-h: 17rem;
+  --carousel-bracket-space: 3.5rem;
+
+  /* Geometry */
+  --bracket-stroke: 2px;
+  --anchor-size: 0.875rem;
+
+  /* Motion — mirror src/animations/timing.ts */
+  --dur-carousel: 600ms;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+
+  /* Reduced motion: durations collapse to ~0 */
+  @media (prefers-reduced-motion: reduce) {
+    --dur-carousel: 1ms;
+  }
+}
+
+/* Compact carousel geometry on small screens */
+@media (max-width: 760px) {
+  :root {
+    --carousel-slot: 10rem;
+    --carousel-image-w: 8.5rem;
+    --carousel-image-h: 10rem;
+    --carousel-bracket-space: 2.5rem;
+    --space-2xl: 2.5rem;
+  }
+}
