@@ -114,11 +114,18 @@ function writeNoise(relativePath, width, height, opts) {
 writeNoise("public/assets/fields/mathematics.png", 360, 450, { seed: 101 });
 writeNoise("public/assets/fields/deep-learning.png", 360, 450, { seed: 202 });
 writeNoise("public/assets/fields/rock-music.png", 360, 450, { seed: 303 });
+writeNoise("public/assets/fields/geometry.png", 360, 450, { seed: 404 });
+writeNoise("public/assets/fields/algebra.png", 360, 450, { seed: 505 });
+writeNoise("public/assets/fields/video-games.png", 360, 450, { seed: 606 });
 
 // Detail images — landscape, used by the text-image and gallery templates.
-writeNoise("public/assets/detail/mathematics-01.png", 480, 360, { seed: 404 });
-writeNoise("public/assets/detail/mathematics-02.png", 480, 360, { seed: 505 });
-writeNoise("public/assets/detail/deep-learning-01.png", 480, 360, { seed: 606 });
-writeNoise("public/assets/detail/rock-music-01.png", 480, 360, { seed: 707 });
-writeNoise("public/assets/detail/rock-music-02.png", 480, 360, { seed: 808 });
-writeNoise("public/assets/detail/rock-music-03.png", 480, 360, { seed: 909 });
+writeNoise("public/assets/detail/mathematics-01.png", 480, 360, { seed: 707 });
+writeNoise("public/assets/detail/mathematics-02.png", 480, 360, { seed: 808 });
+writeNoise("public/assets/detail/deep-learning-01.png", 480, 360, { seed: 909 });
+writeNoise("public/assets/detail/rock-music-01.png", 480, 360, { seed: 1010 });
+writeNoise("public/assets/detail/rock-music-02.png", 480, 360, { seed: 1111 });
+writeNoise("public/assets/detail/rock-music-03.png", 480, 360, { seed: 1212 });
+writeNoise("public/assets/detail/algebra-01.png", 480, 360, { seed: 1313 });
+writeNoise("public/assets/detail/video-games-01.png", 480, 360, { seed: 1414 });
+writeNoise("public/assets/detail/video-games-02.png", 480, 360, { seed: 1515 });
+writeNoise("public/assets/detail/video-games-03.png", 480, 360, { seed: 1616 });

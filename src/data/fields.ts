@@ -116,6 +116,102 @@ export const fields: Field[] = [
       ],
     },
   },
+  {
+    id: "geometry",
+    title: "Geometry",
+    image: "assets/fields/geometry.png",
+    imageAlt: "Grayscale noise placeholder for the Geometry field",
+    metadata: {
+      lines: ["Focus", "Geometry", "Interest", "Curvature", "Topology"],
+    },
+    detail: {
+      template: "text",
+      title: "Geometry",
+      subtitle: "Shapes, spaces, and the invariants that survive deformation.",
+      sections: [
+        {
+          heading: "Differential geometry",
+          paragraphs: [
+            "Curvature as a local measure of how a space bends, and the way global constraints leak out of infinitesimal data. The recurring pleasure is that a handful of local rules pin down geometry that is often far richer than expected.",
+            "This section is placeholder copy — replace it with the actual notes later.",
+          ],
+        },
+        {
+          heading: "Topology",
+          paragraphs: [
+            "What remains when distance is forgotten and only connectedness is kept. A small vocabulary of continuity that reorganises how every other geometric question is asked.",
+          ],
+        },
+      ],
+    },
+  },
+  {
+    id: "algebra",
+    title: "Algebra",
+    image: "assets/fields/algebra.png",
+    imageAlt: "Grayscale noise placeholder for the Algebra field",
+    metadata: {
+      lines: ["Focus", "Algebra", "Interest", "Groups", "Representations"],
+    },
+    detail: {
+      template: "text-image",
+      title: "Algebra",
+      subtitle: "Structure expressed through operations and their symmetries.",
+      sections: [
+        {
+          heading: "On groups",
+          paragraphs: [
+            "Symmetry, formalised. A group is the smallest honest answer to the question of what a collection of reversible transformations can remember about an object.",
+            "The abstraction pays off the moment several unrelated problems collapse into the same diagram.",
+          ],
+        },
+        {
+          heading: "Representations",
+          paragraphs: [
+            "Concrete linear realisations of abstract structures — the bridge between algebraic objects and the matrices that computers and physicists actually use.",
+          ],
+        },
+      ],
+      image: {
+        src: "assets/detail/algebra-01.png",
+        alt: "Grayscale noise placeholder for the Algebra detail image",
+      },
+    },
+  },
+  {
+    id: "video-games",
+    title: "Video Games",
+    image: "assets/fields/video-games.png",
+    imageAlt: "Grayscale noise placeholder for the Video Games field",
+    metadata: {
+      lines: ["Playing", "Video Games", "Currently", "Indie", "Roguelikes"],
+    },
+    detail: {
+      template: "text-gallery",
+      title: "Video Games",
+      subtitle: "Interactive spaces, collected.",
+      sections: [
+        {
+          heading: "Playing",
+          paragraphs: [
+            "A short, loosely annotated list of games worth the time — mostly small, mostly systems-driven, mostly interested in one mechanic done well.",
+            "The column on the right scrolls quietly on its own; it is a shelf, not a grid.",
+          ],
+        },
+        {
+          heading: "Notes",
+          paragraphs: [
+            "Level design, procedural generation, and the particular tension between authored intent and emergent play.",
+          ],
+        },
+      ],
+      images: [
+        { src: "assets/detail/video-games-01.png", alt: "Screenshot placeholder one" },
+        { src: "assets/detail/video-games-02.png", alt: "Screenshot placeholder two" },
+        { src: "assets/detail/video-games-03.png", alt: "Screenshot placeholder three" },
+      ],
+    },
+  },
 ];
 
 export function getFieldById(id: string): Field | undefined {
