@@ -1,0 +1,133 @@
+.carousel {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(1rem, 3vw, 3rem);
+  width: 100%;
+  outline: none;
+}
+
+.carousel:focus-visible {
+  outline: 2px solid var(--color-ink);
+  outline-offset: 10px;
+}
+
+.column {
+  position: relative;
+  height: calc(3 * var(--carousel-slot));
+  overflow: hidden;
+}
+
+.imageColumn {
+  width: calc(var(--carousel-image-w) + 2 * var(--carousel-bracket-space));
+}
+
+.track {
+  will-change: transform;
+}
+
+/* Title column */
+.titleItem {
+  display: flex;
+  align-items: center;
+  height: var(--carousel-slot);
+  padding: 0;
+  text-align: left;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: var(--fs-carousel-active);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: var(--color-ink-faint);
+  white-space: nowrap;
+  transform: scale(0.52);
+  transform-origin: left center;
+  transition:
+    color var(--dur-carousel) var(--ease-out),
+    transform var(--dur-carousel) var(--ease-out);
+}
+
+.titleActive {
+  color: var(--color-ink);
+  transform: scale(1);
+}
+
+/* Image column */
+.imageItem {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--carousel-slot);
+}
+
+.imageButton {
+  display: block;
+  padding: 0;
+  line-height: 0;
+}
+
+.imageSide {
+  width: var(--carousel-image-w);
+  height: var(--carousel-image-h);
+  object-fit: cover;
+  opacity: 0.3;
+  filter: grayscale(0.45) brightness(0.7);
+  transform: scale(0.8);
+  transition:
+    opacity var(--dur-carousel) var(--ease-out),
+    transform var(--dur-carousel) var(--ease-out),
+    filter var(--dur-carousel) var(--ease-out);
+}
+
+/* Metadata column */
+.meta {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2xs);
+  justify-self: end;
+  text-align: left;
+  animation: metaIn 0.45s var(--ease-out);
+}
+
+.metaLine {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: var(--fs-meta);
+  line-height: 1.6;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-ink-soft);
+  white-space: nowrap;
+}
+
+@keyframes metaIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Stack into Title / Image / Metadata on small screens */
+@media (max-width: 760px) {
+  .carousel {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    gap: var(--space-lg);
+  }
+
+  .titleItem {
+    justify-content: center;
+    text-align: center;
+    transform-origin: center center;
+  }
+
+  .meta {
+    justify-self: center;
+    text-align: center;
+  }
+}
