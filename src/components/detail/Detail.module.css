@@ -1,0 +1,136 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+  min-height: 100dvh;
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding: var(--page-pad-y) var(--gutter) 22vh;
+}
+
+.top {
+  display: flex;
+}
+
+.back {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: var(--fs-meta);
+  line-height: 1;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-ink);
+  transition: opacity 0.2s var(--ease-out);
+}
+
+.back:hover {
+  opacity: 0.55;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  margin-top: var(--space-lg);
+}
+
+.titleRow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.anchor {
+  flex: 0 0 auto;
+  width: var(--anchor-size);
+  height: var(--anchor-size);
+  background: var(--color-ink);
+}
+
+.subtitle {
+  max-width: 46ch;
+}
+
+.main {
+  margin-top: var(--space-xl);
+}
+
+.textOnly {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2xl);
+  max-width: 56ch;
+}
+
+.split {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(260px, 380px);
+  gap: var(--space-2xl);
+  align-items: start;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2xl);
+  max-width: 56ch;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.visual {
+  margin: 0;
+}
+
+.staticImage {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.gallery {
+  position: relative;
+  height: 72vh;
+  overflow: hidden;
+}
+
+.galleryTrack {
+  display: flex;
+  flex-direction: column;
+  animation: galleryScroll 26s linear infinite;
+  will-change: transform;
+}
+
+.galleryImage {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  margin-bottom: var(--space-md);
+}
+
+@keyframes galleryScroll {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-50%);
+  }
+}
+
+@media (max-width: 860px) {
+  .split {
+    grid-template-columns: 1fr;
+    gap: var(--space-xl);
+  }
+
+  .gallery {
+    height: 340px;
+  }
+}
