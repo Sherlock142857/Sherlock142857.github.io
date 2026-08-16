@@ -15,10 +15,45 @@ import type { Field } from "../types/content";
  */
 export const fields: Field[] = [
   {
+    id: "about-me",
+    title: "About Me",
+    image: "assets/fields/about-me.jpg",
+    imageAlt: "About Me introduction",
+    metadata: {
+      lines: ["Student", "Fudan University", "Major", "Mathematics", "Based in", "Shanghai"],
+    },
+    detail: {
+      template: "text",
+      title: "About Me",
+      subtitle: "Mathematics student, explorer of patterns.",
+      sections: [
+        {
+          heading: "Background",
+          paragraphs: [
+            "I am an undergraduate mathematics student at Fudan University in Shanghai, currently exploring the intersections of pure mathematics, computational methods, and practical applications.",
+            "My interests span from rigorous mathematical theory to hands-on implementation, from quantitative research to creative pursuits like music and games.",
+          ],
+        },
+        {
+          heading: "Current Focus",
+          paragraphs: [
+            "I am particularly interested in probability theory, optimization, and their applications in machine learning and quantitative research. I am also exploring how mathematical structures can inform better computational systems.",
+          ],
+        },
+        {
+          heading: "Beyond Mathematics",
+          paragraphs: [
+            "Outside of academics, I spend time with rock music, video games, and various other interests that keep life interesting — from computer graphics to card manipulation techniques.",
+          ],
+        },
+      ],
+    },
+  },
+  {
     id: "mathematics",
     title: "Mathematics",
     image: "assets/fields/mathematics.png",
-    imageAlt: "Grayscale noise placeholder for the Mathematics field",
+    imageAlt: "Mathematics field",
     metadata: {
       lines: ["Major", "Mathematics", "Interest", "Probability", "Optimization"],
     },
@@ -28,22 +63,23 @@ export const fields: Field[] = [
       subtitle: "Structure, chance, and the machinery of proof.",
       sections: [
         {
-          heading: "Probability",
+          heading: "Probability & Statistics",
           paragraphs: [
             "Most of the mathematics I care about lives where measure theory meets intuition — random variables, martingales, and the long-run behaviour of processes that never quite settle.",
             "The appeal is that a small set of axioms produces a remarkably rich language for describing uncertainty without ever pretending the uncertainty is under control.",
           ],
         },
         {
-          heading: "Optimization",
+          heading: "Optimization Theory",
           paragraphs: [
             "Convexity, duality, and the geometry of gradient methods. I am interested in why simple iterative schemes converge at all, and where their guarantees break down in practice.",
+            "Optimization sits at the core of both machine learning training procedures and quantitative trading strategies — a unifying mathematical framework across domains.",
           ],
         },
         {
-          heading: "Reading now",
+          heading: "Current Reading",
           paragraphs: [
-            "Stochastic processes and the theory of Markov chains, with a side of probability measures on metric spaces.",
+            "Stochastic processes, Markov chains, and the theory of probability measures on metric spaces. Also exploring connections to information theory and statistical inference.",
           ],
         },
       ],
@@ -53,59 +89,130 @@ export const fields: Field[] = [
     id: "deep-learning",
     title: "Deep Learning",
     image: "assets/fields/deep-learning.png",
-    imageAlt: "Grayscale noise placeholder for the Deep Learning field",
+    imageAlt: "Deep Learning field",
     metadata: {
-      lines: ["Focus", "Deep Learning", "Representation", "Learning", "Currently", "Transformers"],
+      lines: ["Focus", "Deep Learning", "Architecture", "Transformers", "Interest", "Theory"],
     },
     detail: {
-      template: "text-image",
+      template: "text",
       title: "Deep Learning",
       subtitle: "Representations learned from data.",
       sections: [
         {
-          heading: "On representation",
+          heading: "On Representation",
           paragraphs: [
-            "A neural network is, before anything else, a machine for choosing coordinates. The interesting question is rarely whether a model can fit a dataset — it is which structure the optimisation surface quietly rewards.",
-            "This site's own interaction model — a small set of states with carefully controlled transitions — is a deliberate counterpoint to the way large models produce a smooth continuum of outputs.",
+            "A neural network is, before anything else, a machine for choosing coordinates. The interesting question is rarely whether a model can fit a dataset — it is which structure the optimization surface quietly rewards.",
+            "I am particularly interested in the mathematical foundations: why do overparameterized networks generalize? What implicit biases do gradient-based optimizers introduce?",
           ],
         },
         {
-          heading: "In practice",
+          heading: "Current Work",
           paragraphs: [
-            "Scaling behaviour, attention, and the gap between what a loss curve promises and what a system actually does once it is deployed.",
+            "Exploring transformer architectures, attention mechanisms, and their applications beyond natural language. Also studying optimization dynamics and the theory of neural network training.",
+          ],
+        },
+        {
+          heading: "Practical Applications",
+          paragraphs: [
+            "Working on projects that bridge theory and practice — from implementing custom architectures to analyzing model behavior and performance in real-world settings.",
           ],
         },
       ],
-      image: {
-        src: "assets/detail/deep-learning-01.png",
-        alt: "Grayscale noise placeholder for Deep Learning detail",
-      },
+    },
+  },
+  {
+    id: "quantitative-research",
+    title: "Quantitative Research",
+    image: "assets/fields/quantitative-research.jpg",
+    imageAlt: "Quantitative Research field",
+    metadata: {
+      lines: ["Interest", "Quantitative", "Focus", "Statistical Arbitrage", "Tools", "Python"],
+    },
+    detail: {
+      template: "text",
+      title: "Quantitative Research",
+      subtitle: "Markets, models, and statistical edge.",
+      sections: [
+        {
+          heading: "Systematic Trading",
+          paragraphs: [
+            "Quantitative research sits at the intersection of probability theory, optimization, and real-world market dynamics. The challenge is not just building models that work in theory, but ones that survive actual trading conditions.",
+            "I am exploring statistical arbitrage strategies, market microstructure, and the application of machine learning to alpha generation and risk management.",
+          ],
+        },
+        {
+          heading: "Technical Stack",
+          paragraphs: [
+            "Python for research and backtesting, with a focus on pandas, numpy, and custom implementations of statistical models. Currently learning more about production trading systems and infrastructure.",
+          ],
+        },
+        {
+          heading: "Current Projects",
+          paragraphs: [
+            "Building and testing mean-reversion strategies, studying volatility forecasting, and exploring factor models. Placeholder for specific project details and results.",
+          ],
+        },
+      ],
+    },
+  },
+  {
+    id: "video-games",
+    title: "Video Games",
+    image: "assets/fields/video-games.jpg",
+    imageAlt: "Video Games field",
+    metadata: {
+      lines: ["Playing", "Indie Games", "Genre", "Roguelikes", "Interest", "Game Design"],
+    },
+    detail: {
+      template: "text-gallery",
+      title: "Video Games",
+      subtitle: "Interactive systems, emergent complexity.",
+      sections: [
+        {
+          heading: "What I Play",
+          paragraphs: [
+            "I am drawn to games that are systems-first — roguelikes, strategy games, and anything with emergent complexity arising from simple rules. The kind of games where mastery comes from understanding structure, not memorizing sequences.",
+            "Current favorites include Hades, Slay the Spire, Into the Breach, and various indie titles that prioritize mechanical depth over production value.",
+          ],
+        },
+        {
+          heading: "On Game Design",
+          paragraphs: [
+            "What makes a game system interesting is often the same thing that makes a mathematical structure interesting: constraints that force creativity, feedback loops that reward understanding, and emergent patterns that surprise even the designer.",
+          ],
+        },
+      ],
+      images: [
+        { src: "assets/detail/video-games-01.png", alt: "Game screenshot placeholder one" },
+        { src: "assets/detail/video-games-02.png", alt: "Game screenshot placeholder two" },
+        { src: "assets/detail/video-games-03.png", alt: "Game screenshot placeholder three" },
+      ],
     },
   },
   {
     id: "rock-music",
     title: "Rock Music",
     image: "assets/fields/rock-music.png",
-    imageAlt: "Grayscale noise placeholder for the Rock Music field",
+    imageAlt: "Rock Music field",
     metadata: {
-      lines: ["Listening", "Rock", "Currently", "Loud", "And", "Guitars"],
+      lines: ["Listening", "Rock & Metal", "Playing", "Electric Guitar", "Favorites", "Progressive"],
     },
     detail: {
       template: "text-gallery",
       title: "Rock Music",
-      subtitle: "Loud guitars, collected.",
+      subtitle: "Loud guitars, tight riffs, deliberate chaos.",
       sections: [
         {
           heading: "Listening",
           paragraphs: [
-            "An ongoing, loosely curated collection of records — mostly electric, mostly deliberate, mostly too loud for a shared office.",
-            "The column on the right scrolls quietly on its own. It is not meant to be read as a grid; it is a shelf viewed from the side.",
+            "An ongoing collection of albums — mostly rock and metal, mostly loud, mostly featuring guitar work that rewards repeated listening. Progressive rock, math rock, and anything that treats time signatures as suggestions.",
+            "Current rotation includes Tool, Dream Theater, Opeth, and a mix of modern progressive metal bands. The column on the right scrolls quietly; it is a shelf, not a grid.",
           ],
         },
         {
-          heading: "Notes",
+          heading: "Playing",
           paragraphs: [
-            "Riffs, production, and the particular kind of restraint that makes a band sound enormous without sounding busy.",
+            "I play electric guitar, currently working through challenging technical pieces and trying to understand what makes certain riffs memorable beyond their difficulty. The intersection of technique and taste.",
           ],
         },
       ],
@@ -117,98 +224,49 @@ export const fields: Field[] = [
     },
   },
   {
-    id: "geometry",
-    title: "Geometry",
-    image: "assets/fields/geometry.png",
-    imageAlt: "Grayscale noise placeholder for the Geometry field",
+    id: "other-interests",
+    title: "Other Interests",
+    image: "assets/fields/other-interests.jpg",
+    imageAlt: "Other Interests field",
     metadata: {
-      lines: ["Focus", "Geometry", "Interest", "Curvature", "Topology"],
+      lines: ["Topics", "Computer Graphics", "AI Agents", "Hobbies", "Card Magic", "Speedcubing"],
     },
     detail: {
       template: "text",
-      title: "Geometry",
-      subtitle: "Shapes, spaces, and the invariants that survive deformation.",
+      title: "Other Interests",
+      subtitle: "A collection of pursuits outside the main tracks.",
       sections: [
         {
-          heading: "Differential geometry",
+          heading: "Computer Graphics",
           paragraphs: [
-            "Curvature as a local measure of how a space bends, and the way global constraints leak out of infinitesimal data. The recurring pleasure is that a handful of local rules pin down geometry that is often far richer than expected.",
-            "This section is placeholder copy — replace it with the actual notes later.",
+            "The mathematics of rendering — ray tracing, shader programming, and the geometry of transformations. I am fascinated by how mathematical abstractions translate into visual results, and how real-time constraints shape algorithm design.",
+            "Currently exploring WebGL and learning about modern graphics pipelines. This website itself is a small exercise in controlled visual states and transitions.",
           ],
         },
         {
-          heading: "Topology",
+          heading: "AI Agents & Systems",
           paragraphs: [
-            "What remains when distance is forgotten and only connectedness is kept. A small vocabulary of continuity that reorganises how every other geometric question is asked.",
-          ],
-        },
-      ],
-    },
-  },
-  {
-    id: "algebra",
-    title: "Algebra",
-    image: "assets/fields/algebra.png",
-    imageAlt: "Grayscale noise placeholder for the Algebra field",
-    metadata: {
-      lines: ["Focus", "Algebra", "Interest", "Groups", "Representations"],
-    },
-    detail: {
-      template: "text-image",
-      title: "Algebra",
-      subtitle: "Structure expressed through operations and their symmetries.",
-      sections: [
-        {
-          heading: "On groups",
-          paragraphs: [
-            "Symmetry, formalised. A group is the smallest honest answer to the question of what a collection of reversible transformations can remember about an object.",
-            "The abstraction pays off the moment several unrelated problems collapse into the same diagram.",
+            "Interested in agent-based systems, multi-agent coordination, and the practical challenges of building AI systems that interact with real environments. Less about the hype, more about what actually works.",
           ],
         },
         {
-          heading: "Representations",
+          heading: "Card Manipulation & Magic",
           paragraphs: [
-            "Concrete linear realisations of abstract structures — the bridge between algebraic objects and the matrices that computers and physicists actually use.",
-          ],
-        },
-      ],
-      image: {
-        src: "assets/detail/algebra-01.png",
-        alt: "Grayscale noise placeholder for the Algebra detail image",
-      },
-    },
-  },
-  {
-    id: "video-games",
-    title: "Video Games",
-    image: "assets/fields/video-games.png",
-    imageAlt: "Grayscale noise placeholder for the Video Games field",
-    metadata: {
-      lines: ["Playing", "Video Games", "Currently", "Indie", "Roguelikes"],
-    },
-    detail: {
-      template: "text-gallery",
-      title: "Video Games",
-      subtitle: "Interactive spaces, collected.",
-      sections: [
-        {
-          heading: "Playing",
-          paragraphs: [
-            "A short, loosely annotated list of games worth the time — mostly small, mostly systems-driven, mostly interested in one mechanic done well.",
-            "The column on the right scrolls quietly on its own; it is a shelf, not a grid.",
+            "Practicing sleight-of-hand and card manipulation techniques. There is something meditative about perfecting a single move through hundreds of repetitions — precision as its own reward.",
           ],
         },
         {
-          heading: "Notes",
+          heading: "Speedcubing",
           paragraphs: [
-            "Level design, procedural generation, and the particular tension between authored intent and emergent play.",
+            "Solving Rubik's cubes and similar puzzles. The combination of pattern recognition, muscle memory, and algorithmic thinking. Not competitive-level fast, but fast enough to appreciate the elegance of optimal solutions.",
           ],
         },
-      ],
-      images: [
-        { src: "assets/detail/video-games-01.png", alt: "Screenshot placeholder one" },
-        { src: "assets/detail/video-games-02.png", alt: "Screenshot placeholder two" },
-        { src: "assets/detail/video-games-03.png", alt: "Screenshot placeholder three" },
+        {
+          heading: "Cinema",
+          paragraphs: [
+            "Regular moviegoer with a preference for films that take structure seriously — whether that is narrative structure, visual composition, or sound design. The theater experience matters.",
+          ],
+        },
       ],
     },
   },

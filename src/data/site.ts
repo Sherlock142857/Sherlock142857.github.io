@@ -6,10 +6,10 @@ import type { SiteConfig } from "../types/content";
  */
 export const site: SiteConfig = {
   name: "Zening Xuan",
-  identity: ["Mathematics / Computer Science", "Shanghai"],
+  identity: ["Fudan University", "Mathematics Undergraduate", "Shanghai, China"],
   contact: {
     label: "Contact",
-    href: "mailto:hello@example.com",
+    href: "mailto:xuanzening@126.com",
   },
   meta: {
     title: "Zening Xuan — Personal Index",
