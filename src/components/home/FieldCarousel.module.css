@@ -24,6 +24,7 @@
 
 /* Room for the chevrons that extend beyond the image. */
 .imageColumn {
+  position: relative;
   height: calc(3 * var(--carousel-slot));
   width: calc(var(--carousel-image-h) * 2.475);
 }
@@ -72,6 +73,22 @@
   display: block;
   padding: 0;
   line-height: 0;
+  width: var(--carousel-image-w);
+  height: var(--carousel-image-h);
+}
+
+.imageButtonActive {
+  display: block;
+  padding: 0;
+  line-height: 0;
+  width: var(--carousel-image-w);
+  height: var(--carousel-image-h);
+}
+
+.imageActive {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .imageSide {
@@ -85,6 +102,28 @@
     opacity var(--dur-carousel) var(--ease-out),
     transform var(--dur-carousel) var(--ease-out),
     filter var(--dur-carousel) var(--ease-out);
+}
+
+/* Fixed brackets overlay - positioned absolutely in the center of the image column */
+.fixedBrackets {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: calc(var(--carousel-image-h) * 2.475);
+  height: calc(var(--carousel-image-h) * 1.21);
+  overflow: visible;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.chevron {
+  fill: none;
+  stroke: var(--color-frame);
+  stroke-width: 2;
+  stroke-linecap: square;
+  stroke-linejoin: miter;
+  vector-effect: non-scaling-stroke;
 }
 
 /* Metadata column */
