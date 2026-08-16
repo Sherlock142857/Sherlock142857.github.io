@@ -175,14 +175,17 @@ export function playEnterTransition(params: EnterParams): gsap.core.Timeline {
   const tl = gsap.timeline({ defaults: { ease: EASE_IN_OUT }, onComplete });
   let t = 0;
 
-  // Hide the surrounding homepage.
+  // Fast hide: homepage content, backdrop fade in, and image all disappear quickly.
+  // This happens BEFORE the merge starts to avoid collision.
   if (homeContent) {
     tl.to(homeContent, { opacity: 0, y: -18, duration: TRANSITION.hideHome }, t);
   }
-  tl.to(backdrop, { opacity: 1, duration: TRANSITION.hideHome }, t);
+  tl.to(backdrop, { opacity: 1, duration: TRANSITION.hideHome }, t)
+    .to(image, { opacity: 0, duration: TRANSITION.hideHome }, t);
   t += TRANSITION.hideHome;
 
-  // The two chevrons merge into the diamond outline.
+  // Now that everything is clear, the chevrons can merge and fill simultaneously.
+  // Merge and fill overlap completely for a smoother, faster transition.
   tl.to(
     leftTop,
     { attr: { x1: mergedL.top.x1, y1: mergedL.top.y1, x2: mergedL.top.x2, y2: mergedL.top.y2 }, duration: TRANSITION.merge },
@@ -202,16 +205,10 @@ export function playEnterTransition(params: EnterParams): gsap.core.Timeline {
       rightBottom,
       { attr: { x1: mergedR.bottom.x1, y1: mergedR.bottom.y1, x2: mergedR.bottom.x2, y2: mergedR.bottom.y2 }, duration: TRANSITION.merge },
       t
-    );
+    )
+    // Fill starts immediately with merge for fluid transition
+    .to(interior, { opacity: 1, duration: TRANSITION.fill }, t);
   t += TRANSITION.merge;
-
-  // The diamond interior fills black.
-  tl.to(interior, { opacity: 1, duration: TRANSITION.fill }, t).to(
-    image,
-    { opacity: 0, duration: TRANSITION.fill },
-    t
-  );
-  t += TRANSITION.fill;
 
   // Precise 180° rotation around the diamond center. The diamond is invariant
   // under a half-turn, so we snap the rotator back to upright afterwards — this

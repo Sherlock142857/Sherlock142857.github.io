@@ -7,8 +7,8 @@
  *
  * ## Timing philosophy
  * - Carousel advances should feel snappy and responsive (< 0.5s)
- * - Page transitions should feel deliberate but not sluggish (total < 2.5s)
- * - Individual transition phases are kept short to maintain momentum
+ * - Page transitions should feel fast and fluid (total < 1.5s)
+ * - Overlapping animations create momentum and flow
  */
 
 export const EASE_OUT = "cubic-bezier(0.22, 1, 0.36, 1)";
@@ -24,22 +24,22 @@ export const CAROUSEL = {
   ease: EASE_IN_OUT,
 } as const;
 
-/** Page transition timing - each phase is now 25% faster than before */
+/** Page transition timing - faster and more overlapped */
 export const TRANSITION = {
-  /** Hide homepage content (was 0.5s) */
-  hideHome: 0.375,
-  /** Chevrons merge into diamond (was 0.55s) */
-  merge: 0.4,
-  /** Diamond fills with black (was 0.45s) */
-  fill: 0.35,
-  /** 180° rotation (was 0.55s) */
-  rotate: 0.4,
-  /** Chevrons split to page edges (was 0.7s) */
-  split: 0.5,
-  /** Diamond settles beside title (was 0.55s) */
-  settle: 0.4,
-  /** Reveal destination page (was 0.4s) */
-  reveal: 0.3,
+  /** Hide homepage content - must complete before merge starts */
+  hideHome: 0.25,
+  /** Chevrons merge into diamond */
+  merge: 0.35,
+  /** Diamond fills with black (overlaps with merge) */
+  fill: 0.3,
+  /** 180° rotation */
+  rotate: 0.35,
+  /** Chevrons split to page edges */
+  split: 0.4,
+  /** Diamond settles beside title */
+  settle: 0.35,
+  /** Reveal destination page */
+  reveal: 0.25,
   ease: EASE_IN_OUT,
   rotateEase: EASE_LINEAR,
 } as const;
