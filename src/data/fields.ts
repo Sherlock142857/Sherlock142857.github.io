@@ -122,15 +122,15 @@ export const fields: Field[] = [
   },
   {
     id: "quantitative-research",
-    title: "Quantitative Research",
+    title: "Quant Research",
     image: "assets/fields/quantitative-research.jpg",
-    imageAlt: "Quantitative Research field",
+    imageAlt: "Quant Research field",
     metadata: {
       lines: ["Interest", "Quantitative", "Focus", "Statistical Arbitrage", "Tools", "Python"],
     },
     detail: {
       template: "text",
-      title: "Quantitative Research",
+      title: "Quant Research",
       subtitle: "Markets, models, and statistical edge.",
       sections: [
         {

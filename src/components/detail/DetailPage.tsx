@@ -4,7 +4,6 @@ import type { Field } from "../../types/content";
 import { Title } from "../common/Typography";
 import { BackButton } from "./BackButton";
 import { DetailAnchor } from "./DetailAnchor";
-import { DetailFraming } from "./DetailFraming";
 import { DetailImageColumn } from "./DetailImageColumn";
 import { DetailStaticImage } from "./DetailStaticImage";
 import { DetailText } from "./DetailText";
@@ -22,7 +21,6 @@ export function DetailPage({ field, diamond, detailAnchorRef, onExit }: DetailPa
 
   return (
     <>
-      <DetailFraming d={diamond.d} cy={diamond.cy} />
       <div className={s.page}>
         <div className={s.top}>
           <BackButton onClick={onExit} />

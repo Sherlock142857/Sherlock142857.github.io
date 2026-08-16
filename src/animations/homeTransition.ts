@@ -167,6 +167,7 @@ export function playEnterTransition(params: EnterParams): gsap.core.Timeline {
   gsap.set(image, { opacity: 1 });
   gsap.set(rotator, { rotation: 0 });
   gsap.set(interior, { opacity: 0, x: 0, y: 0, scale: 1, transformOrigin: "50% 50%" });
+  gsap.set([leftTop, leftBottom, rightTop, rightBottom], { opacity: 1 });
   setLine(leftTop, homeL.top);
   setLine(leftBottom, homeL.bottom);
   setLine(rightTop, homeR.top);
@@ -219,6 +220,7 @@ export function playEnterTransition(params: EnterParams): gsap.core.Timeline {
   tl.set(rotator, { rotation: 0 }, t);
 
   // Split: mount the detail page, then fly the two chevrons to the page edges.
+  // The chevrons fade out as they move to prevent overlap with detail content.
   tl.call(onNavigateToField, undefined, t)
     .to(
       leftTop,
@@ -238,6 +240,11 @@ export function playEnterTransition(params: EnterParams): gsap.core.Timeline {
     .to(
       rightBottom,
       { attr: { x1: frameR.bottom.x1, y1: frameR.bottom.y1, x2: frameR.bottom.x2, y2: frameR.bottom.y2 }, duration: TRANSITION.split, ease: EASE_IN },
+      t
+    )
+    .to(
+      [leftTop, leftBottom, rightTop, rightBottom],
+      { opacity: 0, duration: TRANSITION.split, ease: EASE_IN },
       t
     );
   t += TRANSITION.split;
@@ -347,6 +354,7 @@ export function playExitTransition(params: ExitParams): gsap.core.Timeline {
   gsap.set(image, { opacity: 0 });
   gsap.set(rotator, { rotation: 0 });
   gsap.set(interior, { opacity: 1, x: anchorStart.x, y: anchorStart.y, scale: 1 });
+  gsap.set([leftTop, leftBottom, rightTop, rightBottom], { opacity: 0 });
   setLine(leftTop, frameL.top);
   setLine(leftBottom, frameL.bottom);
   setLine(rightTop, frameR.top);
@@ -381,6 +389,11 @@ export function playExitTransition(params: ExitParams): gsap.core.Timeline {
     .to(
       rightBottom,
       { attr: { x1: mergedR.bottom.x1, y1: mergedR.bottom.y1, x2: mergedR.bottom.x2, y2: mergedR.bottom.y2 }, duration: TRANSITION.split },
+      t
+    )
+    .to(
+      [leftTop, leftBottom, rightTop, rightBottom],
+      { opacity: 1, duration: TRANSITION.split },
       t
     );
   t += TRANSITION.split;
