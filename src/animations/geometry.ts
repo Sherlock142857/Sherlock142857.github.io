@@ -28,7 +28,7 @@ export const BRACKET_STROKE = 2;
 export const DIAMOND_RATIO = 0.55;
 
 /** Homepage bracket gap as a fraction of the half-diagonal (0-1). At 0, chevrons touch. */
-export const GAP_RATIO = 0.8;
+export const GAP_RATIO = 1.1;
 
 /** Detail-page framing brackets' distance from the viewport edge (px) */
 export const FRAME_PAD = 40;

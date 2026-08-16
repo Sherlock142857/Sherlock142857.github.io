@@ -8,13 +8,13 @@
   --color-frame: #0a0a0a;
 
   /* Typography */
-  --font-display: "Space Grotesk", "Inter", system-ui, -apple-system, sans-serif;
+  --font-display: "Instrument Sans", system-ui, -apple-system, sans-serif;
   --font-body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
 
   /* Type scale (desktop) */
   --fs-hero: clamp(3rem, 9vw, 8rem);
   --fs-title: clamp(2rem, 5.5vw, 4.5rem);
-  --fs-carousel-active: clamp(1.8rem, 2.6vw, 2.9rem);
+  --fs-carousel-active: clamp(2rem, 3vw, 3.2rem);
   --fs-carousel-side: clamp(1.1rem, 1.8vw, 1.5rem);
   --fs-section: clamp(1.5rem, 3vw, 2.25rem);
   --fs-body: 1.0625rem;

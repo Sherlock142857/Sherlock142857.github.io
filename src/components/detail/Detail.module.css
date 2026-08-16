@@ -62,22 +62,24 @@
   display: flex;
   flex-direction: column;
   gap: var(--space-2xl);
-  max-width: 56ch;
+  max-width: 68ch;
   margin-inline: auto;
 }
 
 .split {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(260px, 380px);
+  grid-template-columns: minmax(0, 1fr) minmax(240px, 360px);
   gap: var(--space-2xl);
   align-items: start;
+  max-width: 1400px;
+  margin-inline: auto;
 }
 
 .text {
   display: flex;
   flex-direction: column;
   gap: var(--space-2xl);
-  max-width: 56ch;
+  max-width: 64ch;
 }
 
 .section {
