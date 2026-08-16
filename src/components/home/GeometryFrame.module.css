@@ -22,15 +22,15 @@
 /*
  * The chevrons live in a normalized SVG whose origin sits at the image center.
  * Width/height are computed so the viewBox unit maps to DIAMOND_RATIO * image
- * height (see src/animations/geometry.ts): width 3.8 * 0.55 = 2.09, height
- * 2.2 * 0.55 = 1.21.
+ * height (see src/animations/geometry.ts): width 4.5 * 0.55 = 2.475, height
+ * 2.2 * 0.55 = 1.21. Updated to match GAP_RATIO of 1.1.
  */
 .brackets {
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  width: calc(var(--carousel-image-h) * 2.09);
+  width: calc(var(--carousel-image-h) * 2.475);
   height: calc(var(--carousel-image-h) * 1.21);
   overflow: visible;
   pointer-events: none;
