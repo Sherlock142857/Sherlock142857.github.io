@@ -12,17 +12,29 @@ import {
 } from "./geometry";
 import { EASE_IN, EASE_IN_OUT, EASE_LINEAR, TRANSITION } from "./timing";
 
+/**
+ * DOM elements required for the page transition animation.
+ * These refs are passed from the HomeTransition component which renders
+ * the SVG overlay and manages the transition lifecycle.
+ */
 export interface TransitionElements {
+  /** Full-screen overlay containing all transition graphics */
   overlay: HTMLElement;
+  /** Black backdrop that fades in during the transition */
   backdrop: HTMLElement;
+  /** Homepage carousel image (fades out as diamond fills) */
   image: HTMLElement;
-  /** Rotates the whole diamond around its center. */
+  /** Rotates the whole diamond around its center during the 180° spin */
   rotator: HTMLElement;
-  /** The solid diamond interior (translated to its resting place). */
+  /** The solid diamond interior (translated to its resting place on detail page) */
   interior: SVGGElement;
+  /** Left bracket top edge (animated line) */
   leftTop: SVGLineElement;
+  /** Left bracket bottom edge (animated line) */
   leftBottom: SVGLineElement;
+  /** Right bracket top edge (animated line) */
   rightTop: SVGLineElement;
+  /** Right bracket bottom edge (animated line) */
   rightBottom: SVGLineElement;
 }
 
@@ -31,29 +43,84 @@ interface BaseParams {
   onComplete: () => void;
 }
 
+/**
+ * Parameters for entering a field detail page from the homepage.
+ */
 export interface EnterParams extends BaseParams {
+  /** Bounding rect of the homepage carousel image frame */
   fromRect: DOMRect;
+  /** Homepage content container (to be hidden) */
   homeContent: HTMLElement | null;
+  /** Target anchor element beside the detail page title */
   detailAnchor: RefObject<HTMLElement>;
+  /** Callback to mount the detail page (called mid-transition) */
   onNavigateToField: () => void;
 }
 
+/**
+ * Parameters for exiting a field detail page back to the homepage.
+ */
 export interface ExitParams extends BaseParams {
+  /** Bounding rect of the homepage image frame (may be null on first render) */
   fromRect: DOMRect | null;
+  /** Anchor element beside the detail page title (starting position of diamond) */
   detailAnchor: RefObject<HTMLElement>;
+  /** Callback to mount the homepage (called at start of transition) */
   onNavigateHome: () => void;
 }
 
+/**
+ * Convert a line from absolute viewport coordinates to local coordinates
+ * relative to the diamond center (cx, cy).
+ *
+ * @param line - Line in viewport coordinates
+ * @param cx - Diamond center X
+ * @param cy - Diamond center Y
+ * @returns Line in local coordinate frame centered at (0, 0)
+ */
 function toLocal(line: Line, cx: number, cy: number): Line {
   return { x1: line.x1 - cx, y1: line.y1 - cy, x2: line.x2 - cx, y2: line.y2 - cy };
 }
 
+/**
+ * Set SVG line element attributes via GSAP.
+ * Using GSAP ensures the line coordinates are animatable and stay in sync
+ * with other timeline animations.
+ *
+ * @param line - SVG line element to update
+ * @param coords - New line coordinates
+ */
 function setLine(line: SVGLineElement, coords: Line) {
   gsap.set(line, {
     attr: { x1: coords.x1, y1: coords.y1, x2: coords.x2, y2: coords.y2 },
   });
 }
 
+/**
+ * Play the enter transition: homepage → detail page.
+ *
+ * ## Animation sequence (total ~2.375s, was ~3.7s)
+ * 1. **Hide home** (0.375s): Fade out homepage content, fade in black backdrop
+ * 2. **Merge** (0.4s): Two chevrons close together to form diamond outline
+ * 3. **Fill** (0.35s): Diamond interior fades to opaque black, image fades out
+ * 4. **Rotate** (0.4s): Precise 180° rotation (invisible due to diamond symmetry)
+ * 5. **Split** (0.5s): Chevrons fly outward to frame the viewport edges
+ * 6. **Settle** (0.4s): Diamond interior moves beside the detail page title
+ * 7. **Reveal** (0.3s): Fade out overlay to show detail page
+ *
+ * ## Coordinate frames
+ * - Bracket lines are computed in a **local frame** centered at (cx, cy)
+ * - The rotator element spins around its center, then snaps back to 0° (invisible)
+ * - After rotation, the diamond looks identical but we're back in unrotated coords
+ *
+ * ## State mounting
+ * - Homepage is visible at start
+ * - Detail page mounts mid-transition (after split phase starts)
+ * - Overlay hides at the end to reveal the detail page
+ *
+ * @param params - Transition parameters including DOM refs and callbacks
+ * @returns GSAP timeline (can be controlled externally if needed)
+ */
 export function playEnterTransition(params: EnterParams): gsap.core.Timeline {
   const {
     elements,
@@ -207,6 +274,28 @@ export function playEnterTransition(params: EnterParams): gsap.core.Timeline {
   return tl;
 }
 
+/**
+ * Play the exit transition: detail page → homepage.
+ * This is the exact reverse of playEnterTransition.
+ *
+ * ## Animation sequence (total ~2.375s, was ~3.7s)
+ * 1. **Mount homepage early** (0s): Homepage renders behind the overlay
+ * 2. **Settle return** (0.4s): Diamond interior returns from title to center
+ * 3. **Merge** (0.5s): Framing chevrons fly inward to form diamond outline
+ * 4. **Rotate** (0.4s): Counter-rotation by -180° (opposite direction)
+ * 5. **Fill clear** (0.35s): Diamond interior fades out, image fades in
+ * 6. **Unmerge** (0.4s): Diamond splits back into two separated chevrons
+ * 7. **Reveal** (0.3s): Fade out overlay to show homepage
+ *
+ * ## Differences from enter transition
+ * - Homepage mounts at the very start (not mid-transition)
+ * - Rotation direction is reversed (-180° instead of +180°)
+ * - All phases run in reverse order
+ * - The final state exactly matches the static homepage frame
+ *
+ * @param params - Transition parameters including DOM refs and callbacks
+ * @returns GSAP timeline (can be controlled externally if needed)
+ */
 export function playExitTransition(params: ExitParams): gsap.core.Timeline {
   const {
     elements,

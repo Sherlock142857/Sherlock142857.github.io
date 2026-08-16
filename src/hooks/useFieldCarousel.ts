@@ -3,6 +3,9 @@ import type { RefObject, TransitionEvent } from "react";
 import { computeTrackY } from "../animations/carousel";
 import type { Field } from "../types/content";
 
+/** Throttle delay for ResizeObserver callbacks (ms) */
+const RESIZE_THROTTLE_MS = 100;
+
 export interface FieldCarouselApi {
   titleViewportRef: RefObject<HTMLDivElement>;
   imageViewportRef: RefObject<HTMLDivElement>;
@@ -48,7 +51,10 @@ export function useFieldCarousel(fields: Field[], initialIndex = 0): FieldCarous
 
   // Measure each column's slot height (the title viewport is five slots tall,
   // the image viewport three). A layout effect keeps the first paint correct.
+  // ResizeObserver is throttled to avoid excessive re-measurements during window resize.
   useLayoutEffect(() => {
+    let throttleTimer: ReturnType<typeof setTimeout> | null = null;
+
     const measure = () => {
       if (titleViewportRef.current) {
         setTitleSlotHeight(titleViewportRef.current.clientHeight / 5);
@@ -57,11 +63,28 @@ export function useFieldCarousel(fields: Field[], initialIndex = 0): FieldCarous
         setImageSlotHeight(imageViewportRef.current.clientHeight / 3);
       }
     };
+
+    const throttledMeasure = () => {
+      if (throttleTimer !== null) return;
+      throttleTimer = setTimeout(() => {
+        measure();
+        throttleTimer = null;
+      }, RESIZE_THROTTLE_MS);
+    };
+
+    // Measure immediately on mount
     measure();
-    const observer = new ResizeObserver(measure);
+
+    const observer = new ResizeObserver(throttledMeasure);
     if (titleViewportRef.current) observer.observe(titleViewportRef.current);
     if (imageViewportRef.current) observer.observe(imageViewportRef.current);
-    return () => observer.disconnect();
+
+    return () => {
+      observer.disconnect();
+      if (throttleTimer !== null) {
+        clearTimeout(throttleTimer);
+      }
+    };
   }, []);
 
   const activeIndex = ((slot % n) + n) % n;
