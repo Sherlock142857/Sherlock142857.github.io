@@ -184,8 +184,7 @@ export function playEnterTransition(params: EnterParams): gsap.core.Timeline {
     .to(image, { opacity: 0, duration: TRANSITION.hideHome }, t);
   t += TRANSITION.hideHome;
 
-  // Now that everything is clear, the chevrons can merge and fill simultaneously.
-  // Merge and fill overlap completely for a smoother, faster transition.
+  // Now that everything is clear, the chevrons merge into diamond.
   tl.to(
     leftTop,
     { attr: { x1: mergedL.top.x1, y1: mergedL.top.y1, x2: mergedL.top.x2, y2: mergedL.top.y2 }, duration: TRANSITION.merge },
@@ -205,10 +204,12 @@ export function playEnterTransition(params: EnterParams): gsap.core.Timeline {
       rightBottom,
       { attr: { x1: mergedR.bottom.x1, y1: mergedR.bottom.y1, x2: mergedR.bottom.x2, y2: mergedR.bottom.y2 }, duration: TRANSITION.merge },
       t
-    )
-    // Fill starts immediately with merge for fluid transition
-    .to(interior, { opacity: 1, duration: TRANSITION.fill }, t);
+    );
   t += TRANSITION.merge;
+
+  // After merge completes, the diamond interior fills black.
+  tl.to(interior, { opacity: 1, duration: TRANSITION.fill }, t);
+  t += TRANSITION.fill;
 
   // Precise 180° rotation around the diamond center. The diamond is invariant
   // under a half-turn, so we snap the rotator back to upright afterwards — this
@@ -364,22 +365,22 @@ export function playExitTransition(params: ExitParams): gsap.core.Timeline {
   // Chevrons return to the diamond.
   tl.to(
     leftTop,
-    { attr: { x1: mergedL.top.x1, y1: mergedL.top.y1, x2: mergedL.top.x2, y2: mergedL.top.y2 }, duration: TRANSITION.split, ease: EASE_IN },
+    { attr: { x1: mergedL.top.x1, y1: mergedL.top.y1, x2: mergedL.top.x2, y2: mergedL.top.y2 }, duration: TRANSITION.split },
     t
   )
     .to(
       leftBottom,
-      { attr: { x1: mergedL.bottom.x1, y1: mergedL.bottom.y1, x2: mergedL.bottom.x2, y2: mergedL.bottom.y2 }, duration: TRANSITION.split, ease: EASE_IN },
+      { attr: { x1: mergedL.bottom.x1, y1: mergedL.bottom.y1, x2: mergedL.bottom.x2, y2: mergedL.bottom.y2 }, duration: TRANSITION.split },
       t
     )
     .to(
       rightTop,
-      { attr: { x1: mergedR.top.x1, y1: mergedR.top.y1, x2: mergedR.top.x2, y2: mergedR.top.y2 }, duration: TRANSITION.split, ease: EASE_IN },
+      { attr: { x1: mergedR.top.x1, y1: mergedR.top.y1, x2: mergedR.top.x2, y2: mergedR.top.y2 }, duration: TRANSITION.split },
       t
     )
     .to(
       rightBottom,
-      { attr: { x1: mergedR.bottom.x1, y1: mergedR.bottom.y1, x2: mergedR.bottom.x2, y2: mergedR.bottom.y2 }, duration: TRANSITION.split, ease: EASE_IN },
+      { attr: { x1: mergedR.bottom.x1, y1: mergedR.bottom.y1, x2: mergedR.bottom.x2, y2: mergedR.bottom.y2 }, duration: TRANSITION.split },
       t
     );
   t += TRANSITION.split;
@@ -390,12 +391,8 @@ export function playExitTransition(params: ExitParams): gsap.core.Timeline {
   t += TRANSITION.rotate;
   tl.set(rotator, { rotation: 0 }, t);
 
-  // The fill clears and the image reappears.
-  tl.to(interior, { opacity: 0, duration: TRANSITION.fill }, t).to(
-    image,
-    { opacity: 1, duration: TRANSITION.fill },
-    t
-  );
+  // The fill clears first, THEN the image reappears.
+  tl.to(interior, { opacity: 0, duration: TRANSITION.fill }, t);
   t += TRANSITION.fill;
 
   // Chevrons open back into the homepage frame.
@@ -420,6 +417,10 @@ export function playExitTransition(params: ExitParams): gsap.core.Timeline {
       t
     );
   t += TRANSITION.merge;
+
+  // After unmerge completes, show the image and reveal homepage content quickly.
+  tl.to(image, { opacity: 1, duration: TRANSITION.hideHome }, t)
+    .to(backdrop, { opacity: 0, duration: TRANSITION.hideHome }, t);
 
   // Reveal the homepage.
   tl.to(overlay, { opacity: 0, duration: TRANSITION.reveal }, t);
