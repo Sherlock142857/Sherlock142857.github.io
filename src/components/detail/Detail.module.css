@@ -99,9 +99,12 @@
 }
 
 .gallery {
-  position: relative;
-  height: 72vh;
+  position: sticky;
+  top: var(--space-xl);
+  height: fit-content;
+  max-height: 85vh;
   overflow: hidden;
+  align-self: start;
 }
 
 .galleryTrack {

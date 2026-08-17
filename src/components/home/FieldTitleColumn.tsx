@@ -38,11 +38,13 @@ export function FieldTitleColumn({
         {triple.map((field, i) => {
           const isActive = i === slot;
           const visible = i >= slot - 2 && i <= slot + 2;
+          const itemStyle = snap ? { transition: "none" } : undefined;
           return (
             <button
               key={i}
               type="button"
               className={`${s.titleItem} ${isActive ? s.titleActive : ""}`}
+              style={itemStyle}
               onClick={() => (isActive ? onActivate() : onSelect(i % n))}
               aria-hidden={!visible || undefined}
               aria-current={isActive ? "true" : undefined}
