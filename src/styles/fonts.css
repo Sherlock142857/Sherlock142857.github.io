@@ -1,0 +1,13 @@
+/**
+ * Custom font declarations
+ * All web fonts loaded from /public/fonts/
+ */
+
+/* Anthropic Serif - Roman (supports variable weights) */
+@font-face {
+  font-family: "Anthropic Serif";
+  src: url("/fonts/AnthropicSerif-Roman.woff2") format("woff2");
+  font-weight: 300 800;
+  font-style: normal;
+  font-display: swap;
+}

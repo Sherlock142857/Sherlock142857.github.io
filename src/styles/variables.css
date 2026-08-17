@@ -12,18 +12,18 @@
    * COLOR PALETTE
    * Strong black/white/grayscale hierarchy for editorial feel
    * ========================================================================= */
-  --color-bg: #f4f4f1;
+  --color-bg: #f0eee6;
   --color-surface: #ecece8;
-  --color-ink: #0a0a0a;
-  --color-ink-soft: #6d6d68;
+  --color-ink: #141413;
+  --color-ink-soft: #6c6b67;
   --color-ink-faint: #a9a9a3;
-  --color-frame: #0a0a0a;
+  --color-frame: #141413;
 
   /* ============================================================================
    * TYPOGRAPHY
    * ========================================================================= */
-  --font-display: "Instrument Sans", system-ui, -apple-system, sans-serif;
-  --font-body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: "Anthropic Serif", "Instrument Sans", system-ui, -apple-system, sans-serif;
+  --font-body: "Anthropic Serif", "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
 
   /* Type scale - fluid sizing with clamp() */
   --fs-hero: clamp(3rem, 9vw, 8rem);
