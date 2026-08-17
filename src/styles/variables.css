@@ -59,7 +59,7 @@
    * Desktop-first values; see mobile breakpoint below for smaller screens
    * ========================================================================= */
   --carousel-slot: 17rem;
-  --carousel-title-slot: 9rem;
+  --carousel-title-slot: 7.5rem;
   --carousel-image-w: 14rem;
   --carousel-image-h: 17rem;
 

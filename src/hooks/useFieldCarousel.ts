@@ -8,7 +8,7 @@ import { useCarouselSlotMeasurement } from "./useCarouselSlotMeasurement";
 /**
  * Number of slots visible in each carousel column.
  */
-const TITLE_COLUMN_SLOTS = 5;
+const TITLE_COLUMN_SLOTS = 7;
 const IMAGE_COLUMN_SLOTS = 3;
 
 /**
@@ -52,7 +52,7 @@ export interface FieldCarouselApi {
  * Single source of truth for the homepage carousel.
  *
  * Manages the synchronized scrolling of two columns:
- * - Title column: 5 visible slots with tighter spacing
+ * - Title column: 7 visible slots with tighter spacing
  * - Image column: 3 visible slots with larger images
  *
  * Both columns are driven by one `slot` value, so they advance together.
@@ -82,8 +82,8 @@ export function useFieldCarousel(fields: Field[], initialIndex = 0): FieldCarous
   const navigation = useCarouselNavigation(n, initialIndex);
 
   // Calculate track positions
-  // Title column shows 5 slots, so center index is 2 (0, 1, [2], 3, 4)
-  const titleY = computeTrackY(navigation.slot, titleSlotHeight, 2);
+  // Title column shows 7 slots, so center index is 3 (0, 1, 2, [3], 4, 5, 6)
+  const titleY = computeTrackY(navigation.slot, titleSlotHeight, 3);
   // Image column shows 3 slots, so center index is 1 (0, [1], 2)
   const imageY = computeTrackY(navigation.slot, imageSlotHeight, 1);
 

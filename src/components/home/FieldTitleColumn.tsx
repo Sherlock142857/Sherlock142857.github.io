@@ -37,7 +37,7 @@ export function FieldTitleColumn({
       <div className={s.track} ref={trackRef} style={trackStyle} onTransitionEnd={onTransitionEnd}>
         {triple.map((field, i) => {
           const isActive = i === slot;
-          const visible = i >= slot - 2 && i <= slot + 2;
+          const visible = i >= slot - 3 && i <= slot + 3;
           const itemStyle = snap ? { transition: "none" } : undefined;
           return (
             <button

@@ -17,9 +17,9 @@
   overflow: hidden;
 }
 
-/* Five tight title rows; three larger image rows. */
+/* Seven tight title rows; three larger image rows. */
 .titleColumn {
-  height: calc(5 * var(--carousel-title-slot));
+  height: calc(7 * var(--carousel-title-slot));
 }
 
 /* Room for the chevrons that extend beyond the image. */

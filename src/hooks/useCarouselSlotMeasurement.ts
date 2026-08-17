@@ -6,14 +6,14 @@ import { PERFORMANCE } from "../config/designTokens";
  * Measures the slot height for carousel columns.
  *
  * Each carousel column is divided into equal-height slots:
- * - Title column: 5 slots (tighter spacing)
+ * - Title column: 7 slots (tighter spacing)
  * - Image column: 3 slots (larger images)
  *
  * Uses ResizeObserver to track viewport size changes and updates slot heights accordingly.
  * Throttled to avoid excessive re-measurements during window resize.
  *
  * @param viewportRef - Reference to the viewport container
- * @param slotCount - Number of slots in the viewport (3 or 5)
+ * @param slotCount - Number of slots in the viewport (3 or 7)
  * @returns Current slot height in pixels
  */
 export function useCarouselSlotMeasurement(
