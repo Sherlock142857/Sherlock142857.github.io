@@ -1,158 +1,107 @@
-import { useCallback, useLayoutEffect, useRef, useState } from "react";
+import { useRef } from "react";
 import type { RefObject, TransitionEvent } from "react";
 import { computeTrackY } from "../animations/carousel";
 import type { Field } from "../types/content";
+import { useCarouselNavigation } from "./useCarouselNavigation";
+import { useCarouselSlotMeasurement } from "./useCarouselSlotMeasurement";
 
-/** Throttle delay for ResizeObserver callbacks (ms) */
-const RESIZE_THROTTLE_MS = 100;
+/**
+ * Number of slots visible in each carousel column.
+ */
+const TITLE_COLUMN_SLOTS = 5;
+const IMAGE_COLUMN_SLOTS = 3;
 
+/**
+ * API returned by useFieldCarousel hook.
+ * Provides refs, state, and control functions for the carousel.
+ */
 export interface FieldCarouselApi {
+  /** Ref for the title column viewport container */
   titleViewportRef: RefObject<HTMLDivElement>;
+  /** Ref for the image column viewport container */
   imageViewportRef: RefObject<HTMLDivElement>;
+  /** Ref for the title column track (the sliding element) */
   titleTrackRef: RefObject<HTMLDivElement>;
+  /** Ref for the image column track (the sliding element) */
   imageTrackRef: RefObject<HTMLDivElement>;
+  /** Current slot index in the tripled list */
   slot: number;
+  /** Current active item index (0-based, in original list) */
   activeIndex: number;
+  /** Currently active field */
   activeField: Field;
+  /** Previous field in the list */
   previous: Field;
+  /** Next field in the list */
   next: Field;
+  /** Title track Y position (CSS transform) */
   titleY: number;
+  /** Image track Y position (CSS transform) */
   imageY: number;
+  /** Whether to disable transitions (for instant snap-back) */
   snap: boolean;
+  /** Advance carousel by one step */
   advance: (dir: 1 | -1) => void;
+  /** Jump to a specific item */
   goTo: (index: number) => void;
+  /** Handle track transition end event */
   onTrackTransitionEnd: (event: TransitionEvent<HTMLDivElement>) => void;
 }
 
 /**
- * Single source of truth for the homepage carousel. The title and image columns
- * are driven by one `slot` value, so they advance together; the title column
- * shows five rows (tighter spacing) while the image column shows three, so only
- * the active title sits level with the active image.
+ * Single source of truth for the homepage carousel.
+ *
+ * Manages the synchronized scrolling of two columns:
+ * - Title column: 5 visible slots with tighter spacing
+ * - Image column: 3 visible slots with larger images
+ *
+ * Both columns are driven by one `slot` value, so they advance together.
+ * Only the active title sits level with the active image due to different
+ * slot counts and heights.
+ *
+ * Uses an infinite scroll pattern with a tripled list to create seamless looping.
+ *
+ * @param fields - Array of fields to display in the carousel
+ * @param initialIndex - Starting index (used for restoring position after navigation)
+ * @returns Carousel API with refs, state, and control functions
  */
 export function useFieldCarousel(fields: Field[], initialIndex = 0): FieldCarouselApi {
   const n = fields.length;
 
+  // DOM refs for both columns
   const titleViewportRef = useRef<HTMLDivElement>(null);
   const imageViewportRef = useRef<HTMLDivElement>(null);
   const titleTrackRef = useRef<HTMLDivElement>(null);
   const imageTrackRef = useRef<HTMLDivElement>(null);
 
-  // Start in the middle copy of the tripled list so the loop has no visible
-  // end. `initialIndex` restores the field the visitor was viewing on return.
-  const initialSlot = n + (((initialIndex % n) + n) % n);
-  const [slot, setSlot] = useState(initialSlot);
-  const [titleSlotHeight, setTitleSlotHeight] = useState(0);
-  const [imageSlotHeight, setImageSlotHeight] = useState(0);
-  const [snap, setSnap] = useState(false);
+  // Measure slot heights (responsive, updates on resize)
+  const titleSlotHeight = useCarouselSlotMeasurement(titleViewportRef, TITLE_COLUMN_SLOTS);
+  const imageSlotHeight = useCarouselSlotMeasurement(imageViewportRef, IMAGE_COLUMN_SLOTS);
 
-  const slotRef = useRef(slot);
-  const animatingRef = useRef(false);
+  // Navigation state and controls
+  const navigation = useCarouselNavigation(n, initialIndex);
 
-  // Measure each column's slot height (the title viewport is five slots tall,
-  // the image viewport three). A layout effect keeps the first paint correct.
-  // ResizeObserver is throttled to avoid excessive re-measurements during window resize.
-  useLayoutEffect(() => {
-    let throttleTimer: ReturnType<typeof setTimeout> | null = null;
-
-    const measure = () => {
-      if (titleViewportRef.current) {
-        setTitleSlotHeight(titleViewportRef.current.clientHeight / 5);
-      }
-      if (imageViewportRef.current) {
-        setImageSlotHeight(imageViewportRef.current.clientHeight / 3);
-      }
-    };
-
-    const throttledMeasure = () => {
-      if (throttleTimer !== null) return;
-      throttleTimer = setTimeout(() => {
-        measure();
-        throttleTimer = null;
-      }, RESIZE_THROTTLE_MS);
-    };
-
-    // Measure immediately on mount
-    measure();
-
-    const observer = new ResizeObserver(throttledMeasure);
-    if (titleViewportRef.current) observer.observe(titleViewportRef.current);
-    if (imageViewportRef.current) observer.observe(imageViewportRef.current);
-
-    return () => {
-      observer.disconnect();
-      if (throttleTimer !== null) {
-        clearTimeout(throttleTimer);
-      }
-    };
-  }, []);
-
-  const activeIndex = ((slot % n) + n) % n;
-
-  const advance = useCallback(
-    (dir: 1 | -1) => {
-      if (animatingRef.current || n === 0) return;
-      animatingRef.current = true;
-      setSnap(false);
-      slotRef.current = slotRef.current + dir;
-      setSlot(slotRef.current);
-    },
-    [n]
-  );
-
-  const goTo = useCallback(
-    (index: number) => {
-      if (animatingRef.current || n === 0) return;
-      const target = ((index % n) + n) % n;
-      const current = ((slotRef.current % n) + n) % n;
-      let delta = target - current;
-      if (delta > n / 2) delta -= n;
-      else if (delta < -n / 2) delta += n;
-      if (delta === 0) return;
-      animatingRef.current = true;
-      setSnap(false);
-      slotRef.current = slotRef.current + delta;
-      setSlot(slotRef.current);
-    },
-    [n]
-  );
-
-  const onTrackTransitionEnd = useCallback(
-    (event: TransitionEvent<HTMLDivElement>) => {
-      if (event.propertyName !== "transform") return;
-      animatingRef.current = false;
-      const s = slotRef.current;
-      // Rebase into the middle copy without a visible jump: snap to the
-      // visually identical position, then re-enable transitions next frame.
-      if (s >= 2 * n || s < n) {
-        const normalized = s >= 2 * n ? s - n : s + n;
-        slotRef.current = normalized;
-        setSnap(true);
-        setSlot(normalized);
-        requestAnimationFrame(() => requestAnimationFrame(() => setSnap(false)));
-      }
-    },
-    [n]
-  );
-
-  const titleY = computeTrackY(slot, titleSlotHeight, 2);
-  const imageY = computeTrackY(slot, imageSlotHeight, 1);
+  // Calculate track positions
+  // Title column shows 5 slots, so center index is 2 (0, 1, [2], 3, 4)
+  const titleY = computeTrackY(navigation.slot, titleSlotHeight, 2);
+  // Image column shows 3 slots, so center index is 1 (0, [1], 2)
+  const imageY = computeTrackY(navigation.slot, imageSlotHeight, 1);
 
   return {
     titleViewportRef,
     imageViewportRef,
     titleTrackRef,
     imageTrackRef,
-    slot,
-    activeIndex,
-    activeField: fields[activeIndex],
-    previous: fields[(activeIndex - 1 + n) % n],
-    next: fields[(activeIndex + 1) % n],
+    slot: navigation.slot,
+    activeIndex: navigation.activeIndex,
+    activeField: fields[navigation.activeIndex],
+    previous: fields[(navigation.activeIndex - 1 + n) % n],
+    next: fields[(navigation.activeIndex + 1) % n],
     titleY,
     imageY,
-    snap,
-    advance,
-    goTo,
-    onTrackTransitionEnd,
+    snap: navigation.snap,
+    advance: navigation.advance,
+    goTo: navigation.goTo,
+    onTrackTransitionEnd: navigation.onTrackTransitionEnd,
   };
 }

@@ -19,28 +19,32 @@
  * 4. Rotate: 180° rotation (diamond is symmetric, so this is invisible)
  * 5. Split: chevrons expand to frame the detail page edges
  * 6. Settle: the diamond interior moves to rest beside the page title
+ *
+ * @see src/config/designTokens.ts for the source configuration values
  */
 
+import { GEOMETRY } from '../config/designTokens';
+
 /** SVG stroke width for bracket lines (px) */
-export const BRACKET_STROKE = 2;
+export const BRACKET_STROKE = GEOMETRY.bracketStroke;
 
 /** Diamond half-diagonal as a fraction of the image height (0-1) */
-export const DIAMOND_RATIO = 0.55;
+export const DIAMOND_RATIO = GEOMETRY.diamondRatio;
 
 /** Homepage bracket gap as a fraction of the half-diagonal (0-1). At 0, chevrons touch. */
-export const GAP_RATIO = 1.1;
+export const GAP_RATIO = GEOMETRY.gapRatio;
 
 /** Detail-page framing brackets' distance from the viewport edge (px) */
-export const FRAME_PAD = 40;
+export const FRAME_PAD = GEOMETRY.framePadding;
 
 /** Framing brackets are this much larger than the diamond brackets (scale multiplier) */
-export const FRAME_SCALE = 1.4;
+export const FRAME_SCALE = GEOMETRY.frameScale;
 
 /** Minimum safe diamond size to prevent degenerate geometry (px) */
-const MIN_DIAMOND_SIZE = 20;
+const MIN_DIAMOND_SIZE = GEOMETRY.minDiamondSize;
 
 /** Maximum reasonable diamond size as a fraction of viewport (0-1) */
-const MAX_DIAMOND_RATIO = 0.8;
+const MAX_DIAMOND_RATIO = GEOMETRY.maxDiamondRatio;
 
 /** Specification for a diamond: center point and half-diagonal */
 export interface DiamondSpec {

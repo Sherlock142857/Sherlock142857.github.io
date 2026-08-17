@@ -1,45 +1,44 @@
 /**
- * Single source of truth for animation timing.
+ * Animation timing configuration.
  *
- * The CSS custom properties in src/styles/variables.css mirror these values so
- * CSS transitions and GSAP timelines stay in lockstep. Keep the two files in
- * sync when tuning.
+ * This file now re-exports values from the central design tokens.
+ * The CSS custom properties in src/styles/variables.css mirror these values.
  *
- * ## Timing philosophy
- * - Carousel advances should feel snappy and responsive (< 0.5s)
- * - Page transitions should feel fast and fluid (total < 1.5s)
- * - Overlapping animations create momentum and flow
+ * @see src/config/designTokens.ts for the source of truth
+ * @deprecated Import from '@/config' instead for new code
  */
 
-export const EASE_OUT = "cubic-bezier(0.22, 1, 0.36, 1)";
-export const EASE_IN = "cubic-bezier(0.55, 0.06, 0.68, 0.19)";
-export const EASE_IN_OUT = "cubic-bezier(0.65, 0, 0.35, 1)";
+import { ANIMATION, EASING } from '../config/designTokens';
+
+export const EASE_OUT = EASING.out;
+export const EASE_IN = EASING.in;
+export const EASE_IN_OUT = EASING.inOut;
 /** Linear — used for the mechanical 180° rotation. */
-export const EASE_LINEAR = "none";
+export const EASE_LINEAR = EASING.linear;
 
 /** Carousel transition timing */
 export const CAROUSEL = {
   /** Duration of carousel slide animation (seconds) */
-  duration: 0.45,
+  duration: ANIMATION.carouselDuration,
   ease: EASE_IN_OUT,
 } as const;
 
 /** Page transition timing - faster and more overlapped */
 export const TRANSITION = {
   /** Hide homepage content - must complete before merge starts */
-  hideHome: 0.25,
+  hideHome: ANIMATION.transitionHideHome,
   /** Chevrons merge into diamond */
-  merge: 0.35,
+  merge: ANIMATION.transitionMerge,
   /** Diamond fills with black (overlaps with merge) */
-  fill: 0.3,
+  fill: ANIMATION.transitionFill,
   /** 180° rotation */
-  rotate: 0.35,
+  rotate: ANIMATION.transitionRotate,
   /** Chevrons split to page edges */
-  split: 0.4,
+  split: ANIMATION.transitionSplit,
   /** Diamond settles beside title */
-  settle: 0.35,
+  settle: ANIMATION.transitionSettle,
   /** Reveal destination page */
-  reveal: 0.25,
+  reveal: ANIMATION.transitionReveal,
   ease: EASE_IN_OUT,
   rotateEase: EASE_LINEAR,
 } as const;

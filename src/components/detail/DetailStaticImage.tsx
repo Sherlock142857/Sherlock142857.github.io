@@ -1,4 +1,5 @@
 import type { FieldDetail } from "../../types/content";
+import { isDetailTextImage } from "../../types/content";
 import { Image } from "../common/Image";
 import { DetailSections } from "./DetailText";
 import s from "./Detail.module.css";
@@ -10,7 +11,7 @@ export function DetailStaticImage({ detail }: { detail: FieldDetail }) {
       <div className={s.text}>
         <DetailSections detail={detail} />
       </div>
-      {detail.image && (
+      {isDetailTextImage(detail) && detail.image && (
         <figure className={s.visual}>
           <Image src={detail.image.src} alt={detail.image.alt} className={s.staticImage} />
         </figure>

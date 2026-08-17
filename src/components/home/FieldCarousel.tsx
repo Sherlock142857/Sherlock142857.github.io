@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import type { RefObject } from "react";
+import { isMobileViewport } from "../../config/breakpoints";
 import { useFieldCarousel } from "../../hooks/useFieldCarousel";
 import type { Field } from "../../types/content";
 import { FieldImageColumn } from "./FieldImageColumn";
@@ -27,7 +28,8 @@ export function FieldCarousel({ fields, frameRef, initialIndex = 0, onActivate }
     const el = sectionRef.current;
     if (!el) return;
     const onWheel = (event: WheelEvent) => {
-      if (window.innerWidth < 760) return;
+      // Skip wheel handling on mobile viewports - allow normal scroll
+      if (isMobileViewport()) return;
       event.preventDefault();
       advance(event.deltaY > 0 ? 1 : -1);
     };

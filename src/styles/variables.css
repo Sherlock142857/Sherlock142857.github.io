@@ -1,5 +1,17 @@
+/**
+ * CSS Custom Properties - mirrors src/config/designTokens.ts
+ *
+ * These values are kept in sync with the TypeScript design tokens.
+ * The TypeScript file is the source of truth; update it first, then sync here.
+ *
+ * @see src/config/designTokens.ts for documentation and rationale
+ */
+
 :root {
-  /* Color — strong black / white / grayscale hierarchy */
+  /* ============================================================================
+   * COLOR PALETTE
+   * Strong black/white/grayscale hierarchy for editorial feel
+   * ========================================================================= */
   --color-bg: #f4f4f1;
   --color-surface: #ecece8;
   --color-ink: #0a0a0a;
@@ -7,11 +19,13 @@
   --color-ink-faint: #a9a9a3;
   --color-frame: #0a0a0a;
 
-  /* Typography */
+  /* ============================================================================
+   * TYPOGRAPHY
+   * ========================================================================= */
   --font-display: "Instrument Sans", system-ui, -apple-system, sans-serif;
   --font-body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
 
-  /* Type scale (desktop) */
+  /* Type scale - fluid sizing with clamp() */
   --fs-hero: clamp(3rem, 9vw, 8rem);
   --fs-title: clamp(2rem, 5.5vw, 4.5rem);
   --fs-carousel-active: clamp(2rem, 3vw, 3.2rem);
@@ -20,7 +34,10 @@
   --fs-body: 1.0625rem;
   --fs-meta: 0.75rem;
 
-  /* Spacing */
+  /* ============================================================================
+   * SPACING SCALE
+   * Geometric progression based on 4px (0.25rem) base unit
+   * ========================================================================= */
   --space-2xs: 0.25rem;
   --space-xs: 0.5rem;
   --space-sm: 0.75rem;
@@ -30,24 +47,37 @@
   --space-2xl: 4rem;
   --space-3xl: 6rem;
 
-  /* Layout */
+  /* ============================================================================
+   * LAYOUT DIMENSIONS
+   * ========================================================================= */
   --max-width: 1920px;
   --gutter: clamp(1rem, 4vw, 3.5rem);
   --page-pad-y: clamp(1.5rem, 4vh, 3.5rem);
 
-  /* Carousel geometry */
+  /* ============================================================================
+   * CAROUSEL GEOMETRY
+   * Desktop-first values; see mobile breakpoint below for smaller screens
+   * ========================================================================= */
   --carousel-slot: 17rem;
   --carousel-title-slot: 9rem;
   --carousel-image-w: 14rem;
   --carousel-image-h: 17rem;
 
-  /* Geometry */
+  /* ============================================================================
+   * VISUAL GEOMETRY
+   * Diamond/chevron system measurements
+   * ========================================================================= */
   --bracket-stroke: 2px;
   --anchor-size: 0.875rem;
 
-  /* Motion — mirror src/animations/timing.ts */
+  /* ============================================================================
+   * ANIMATION TIMING
+   * Values mirror ANIMATION and EASING in src/config/designTokens.ts
+   * Keep the two files in sync when tuning
+   * ========================================================================= */
   --dur-carousel: 450ms;
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in: cubic-bezier(0.55, 0.06, 0.68, 0.19);
   --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
 
   /* Reduced motion: durations collapse to ~0 */
@@ -56,7 +86,10 @@
   }
 }
 
-/* Compact carousel geometry on small screens */
+/* ============================================================================
+ * MOBILE BREAKPOINT (max-width: 760px)
+ * Compact carousel geometry and adjusted spacing for small screens
+ * ========================================================================= */
 @media (max-width: 760px) {
   :root {
     --carousel-slot: 10rem;

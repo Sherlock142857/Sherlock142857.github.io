@@ -1,12 +1,13 @@
 import { useEffect, useRef, useState } from "react";
 import type { FieldDetail } from "../../types/content";
+import { isDetailTextGallery } from "../../types/content";
 import { Image } from "../common/Image";
 import { DetailSections } from "./DetailText";
 import s from "./Detail.module.css";
 
 /** Template C — text left, a quietly auto-scrolling image column right. */
 export function DetailImageColumn({ detail }: { detail: FieldDetail }) {
-  const images = detail.images ?? [];
+  const images = isDetailTextGallery(detail) ? detail.images : [];
   const textRef = useRef<HTMLDivElement>(null);
   const galleryRef = useRef<HTMLDivElement>(null);
   const [repetitions, setRepetitions] = useState(2);
