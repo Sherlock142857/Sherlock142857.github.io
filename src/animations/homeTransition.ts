@@ -162,7 +162,8 @@ export function playEnterTransition(params: EnterParams): gsap.core.Timeline {
   };
 
   // Initial state mirrors the static homepage frame exactly.
-  gsap.set(overlay, { opacity: 1 });
+  // Start with overlay hidden to prevent flash while positioning brackets
+  gsap.set(overlay, { opacity: 0 });
   gsap.set(backdrop, { opacity: 0 });
   gsap.set(image, { opacity: 1 });
   gsap.set(rotator, { rotation: 0 });
@@ -175,6 +176,9 @@ export function playEnterTransition(params: EnterParams): gsap.core.Timeline {
 
   const tl = gsap.timeline({ defaults: { ease: EASE_IN_OUT }, onComplete });
   let t = 0;
+
+  // Instantly show overlay now that brackets are positioned correctly
+  tl.set(overlay, { opacity: 1 }, t);
 
   // Fast hide: homepage content, backdrop fade in, and image all disappear quickly.
   // This happens BEFORE the merge starts to avoid collision.
@@ -349,7 +353,8 @@ export function playExitTransition(params: ExitParams): gsap.core.Timeline {
       }
     : { x: 0, y: 0 };
 
-  gsap.set(overlay, { opacity: 1 });
+  // Start with overlay hidden to prevent flash while positioning brackets
+  gsap.set(overlay, { opacity: 0 });
   gsap.set(backdrop, { opacity: 1 });
   gsap.set(image, { opacity: 0 });
   gsap.set(rotator, { rotation: 0 });
@@ -363,8 +368,9 @@ export function playExitTransition(params: ExitParams): gsap.core.Timeline {
   const tl = gsap.timeline({ defaults: { ease: EASE_IN_OUT }, onComplete });
   let t = 0;
 
-  // Mount the homepage early.
+  // Mount the homepage early and show overlay immediately
   tl.call(onNavigateHome, undefined, 0);
+  tl.set(overlay, { opacity: 1 }, 0);
 
   // The interior returns to the center of the diamond.
   tl.to(interior, { x: 0, y: 0, scale: 1, duration: TRANSITION.settle }, t);

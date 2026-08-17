@@ -36,29 +36,36 @@ export function FieldImageColumn({
     transition: snap ? "none" : "transform var(--dur-carousel) var(--ease-in-out)",
   };
 
-  // Dynamically compute bracket coordinates to match animation exactly
-  const [bracketCoords, setBracketCoords] = useState({ viewBox: "", leftPath: "", rightPath: "" });
+  // Dynamically compute bracket coordinates using EXACT same method as animation
+  const [bracketState, setBracketState] = useState<{
+    d: number;
+    leftTop: { x1: number; y1: number; x2: number; y2: number };
+    leftBottom: { x1: number; y1: number; x2: number; y2: number };
+    rightTop: { x1: number; y1: number; x2: number; y2: number };
+    rightBottom: { x1: number; y1: number; x2: number; y2: number };
+  } | null>(null);
 
   useEffect(() => {
     const updateBrackets = () => {
       if (!frameRef.current) return;
 
       const rect = frameRef.current.getBoundingClientRect();
+
+      // Use EXACT same calculation as homeTransition.ts
       const d = rect.height * DIAMOND_RATIO;
       const gap = d * GAP_RATIO;
 
+      // Use EXACT same functions as animation
       const left = leftBracketLines(d, gap);
       const right = rightBracketLines(d, gap);
 
-      // Calculate viewBox to contain both brackets with some padding
-      const maxX = Math.max(Math.abs(left.top.x1), Math.abs(right.top.x1)) + 10;
-      const maxY = d + 10;
-      const viewBox = `${-maxX} ${-maxY} ${maxX * 2} ${maxY * 2}`;
-
-      const leftPath = `M ${left.top.x1} ${left.top.y1} L ${left.top.x2} ${left.top.y2} M ${left.bottom.x1} ${left.bottom.y1} L ${left.bottom.x2} ${left.bottom.y2}`;
-      const rightPath = `M ${right.top.x1} ${right.top.y1} L ${right.top.x2} ${right.top.y2} M ${right.bottom.x1} ${right.bottom.y1} L ${right.bottom.x2} ${right.bottom.y2}`;
-
-      setBracketCoords({ viewBox, leftPath, rightPath });
+      setBracketState({
+        d,
+        leftTop: left.top,
+        leftBottom: left.bottom,
+        rightTop: right.top,
+        rightBottom: right.bottom,
+      });
     };
 
     updateBrackets();
@@ -89,16 +96,44 @@ export function FieldImageColumn({
           );
         })}
       </div>
-      {/* Fixed brackets overlay - dynamically positioned to match animation exactly */}
-      {bracketCoords.viewBox && (
+      {/* Fixed brackets overlay - uses EXACT same coordinate system as HomeTransition */}
+      {bracketState && (
         <svg
           className={s.fixedBrackets}
-          viewBox={bracketCoords.viewBox}
-          preserveAspectRatio="xMidYMid meet"
           aria-hidden="true"
         >
-          <path className={s.chevron} d={bracketCoords.leftPath} />
-          <path className={s.chevron} d={bracketCoords.rightPath} />
+          {/* Use same structure as HomeTransition: g with translate to center */}
+          <g transform="translate(0, 0)">
+            {/* Use <line> elements exactly like the animation */}
+            <line
+              className={s.chevron}
+              x1={bracketState.leftTop.x1}
+              y1={bracketState.leftTop.y1}
+              x2={bracketState.leftTop.x2}
+              y2={bracketState.leftTop.y2}
+            />
+            <line
+              className={s.chevron}
+              x1={bracketState.leftBottom.x1}
+              y1={bracketState.leftBottom.y1}
+              x2={bracketState.leftBottom.x2}
+              y2={bracketState.leftBottom.y2}
+            />
+            <line
+              className={s.chevron}
+              x1={bracketState.rightTop.x1}
+              y1={bracketState.rightTop.y1}
+              x2={bracketState.rightTop.x2}
+              y2={bracketState.rightTop.y2}
+            />
+            <line
+              className={s.chevron}
+              x1={bracketState.rightBottom.x1}
+              y1={bracketState.rightBottom.y1}
+              x2={bracketState.rightBottom.x2}
+              y2={bracketState.rightBottom.y2}
+            />
+          </g>
         </svg>
       )}
     </div>

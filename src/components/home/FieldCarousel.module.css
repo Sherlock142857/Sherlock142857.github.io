@@ -109,7 +109,7 @@
   position: absolute;
   left: 50%;
   top: 50%;
-  transform: translate(-50%, -50%);
+  /* Don't use transform here, let the SVG coordinate system handle positioning */
   width: calc(var(--carousel-image-h) * 2.475);
   height: calc(var(--carousel-image-h) * 1.21);
   overflow: visible;
@@ -123,7 +123,7 @@
   stroke-width: 2;
   stroke-linecap: square;
   stroke-linejoin: miter;
-  vector-effect: non-scaling-stroke;
+  /* Remove vector-effect to match animation brackets exactly */
 }
 
 /* Metadata column */
