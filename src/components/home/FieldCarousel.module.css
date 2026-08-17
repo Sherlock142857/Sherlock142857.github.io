@@ -4,7 +4,9 @@
   align-items: center;
   gap: clamp(1.5rem, 6vw, 6rem);
   width: 100%;
+  max-width: 100%;
   outline: none;
+  overflow: visible;
 }
 
 .carousel:focus-visible {
@@ -27,6 +29,8 @@
   position: relative;
   height: calc(3 * var(--carousel-slot));
   width: calc(var(--carousel-image-h) * 2.475);
+  max-width: 100%;
+  min-width: 0;
 }
 
 .track {
@@ -175,5 +179,19 @@
   .meta {
     justify-self: center;
     text-align: center;
+  }
+}
+
+/* Adjust layout for medium screens to prevent overflow */
+@media (max-width: 1024px) {
+  .carousel {
+    gap: clamp(1rem, 4vw, 3rem);
+  }
+}
+
+/* Ensure proper spacing on small desktop screens */
+@media (max-width: 1400px) {
+  .carousel {
+    gap: clamp(1.5rem, 5vw, 4.5rem);
   }
 }

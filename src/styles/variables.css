@@ -50,7 +50,8 @@
   /* ============================================================================
    * LAYOUT DIMENSIONS
    * ========================================================================= */
-  --max-width: 1920px;
+  --max-width: 100%;
+  --content-max-width: 1920px;
   --gutter: clamp(1rem, 4vw, 3.5rem);
   --page-pad-y: clamp(1.5rem, 4vh, 3.5rem);
 
@@ -97,5 +98,32 @@
     --carousel-image-w: 8.5rem;
     --carousel-image-h: 10rem;
     --space-2xl: 2.5rem;
+  }
+}
+
+/* ============================================================================
+ * MEDIUM SCREEN ADJUSTMENTS (max-width: 1400px)
+ * Scale down carousel to prevent overflow on smaller desktop screens
+ * ========================================================================= */
+@media (max-width: 1400px) {
+  :root {
+    --carousel-slot: 15rem;
+    --carousel-title-slot: 7rem;
+    --carousel-image-w: 12rem;
+    --carousel-image-h: 15rem;
+  }
+}
+
+/* ============================================================================
+ * SMALL DESKTOP ADJUSTMENTS (max-width: 1024px)
+ * Further reduce carousel size for tablets and small laptops
+ * ========================================================================= */
+@media (max-width: 1024px) {
+  :root {
+    --carousel-slot: 13rem;
+    --carousel-title-slot: 6.5rem;
+    --carousel-image-w: 10.5rem;
+    --carousel-image-h: 13rem;
+    --space-2xl: 3rem;
   }
 }

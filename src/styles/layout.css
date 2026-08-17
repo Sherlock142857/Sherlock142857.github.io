@@ -2,9 +2,10 @@
 
 .container {
   width: 100%;
-  max-width: var(--max-width);
+  max-width: var(--content-max-width);
   margin-inline: auto;
   padding-inline: var(--gutter);
+  overflow-x: hidden;
 }
 
 /* Visually hidden but available to assistive technology. */
