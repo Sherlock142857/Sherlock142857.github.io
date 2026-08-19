@@ -54,7 +54,7 @@ export const fields: Field[] = [
 
     title: "Mathematics",
 
-    image: "assets/fields/mathematics.png",
+    image: "assets/fields/mathematics.jpg",
 
     imageAlt: "Mathematics field",
 
@@ -139,7 +139,7 @@ export const fields: Field[] = [
 
     title: "Deep Learning",
 
-    image: "assets/fields/deep-learning.png",
+    image: "assets/fields/deep-learning.jpg",
 
     imageAlt: "Deep Learning field",
 
@@ -445,7 +445,7 @@ export const fields: Field[] = [
   {
     "id": "other-interests",
     "title": "Other Interests",
-    "image": "assets/fields/other-interests.jpg",
+    "image": "assets/fields/other-interests.png",
     "imageAlt": "Other Interests field",
     "metadata": {
       "lines": [
