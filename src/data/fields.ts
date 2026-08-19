@@ -50,316 +50,458 @@ export const fields: Field[] = [
     },
   },
   {
-    id: "mathematics",
+        id: "mathematics",
+
     title: "Mathematics",
+
     image: "assets/fields/mathematics.png",
+
     imageAlt: "Mathematics field",
+
     metadata: {
-      lines: ["Major", "Mathematics", "Interest", "Probability", "Optimization"],
+      lines: ["Beginnings", "At University", "Favourite Theorem & Course", "Full Circle"],
     },
+
     detail: {
+
       template: "text",
+
       title: "Mathematics",
-      subtitle: "Structure, chance, and the machinery of proof.",
+
+      subtitle: "The language of the universe.",
+
       sections: [
+
         {
+
           heading: "Beginnings",
+
           paragraphs: [
-            "My relationship with mathematics began in high school, through mathematical olympiad competitions. At the time, I was fascinated by the feeling that a small set of axioms and a few lines of reasoning could lead somewhere completely unexpected.",
-            "I was not particularly good at the competitions, though. In fact, I did quite badly, and the result became one of the more memorable failures of my teenage years. For a while, it felt almost paradoxical: the thing that had made me fall in love with mathematics was also the thing at which I had failed so conspicuously.",
-            "What turned out to be more important was that the failure did not make me stop.",
+
+            "My relationship with mathematics began in high school, when I started taking part in mathematical olympiad competitions. What drew me in at first was simply problem solving. I liked the feeling of being given a problem that seemed difficult or unfamiliar, and then gradually finding a way through it. Over time, that interest in solving problems grew into something deeper: I began to appreciate the beauty of mathematics itself, and the way a simple idea could lead to something unexpectedly rich.",
+
+            "I eventually failed to achieve the results I had hoped for in those competitions. But that experience did not make me lose interest in mathematics. The competitions ended, but my curiosity about mathematics remained. In retrospect, the failure mattered much less than the fact that I had found something I genuinely enjoyed learning.",
+
           ],
+
         },
+
         {
-          heading: "At Fudan",
+
+          heading: "At University",
+
           paragraphs: [
-            "At Fudan, mathematics gradually became something different. It was no longer just about solving problems under time pressure. I began to see it as a world of structures, where definitions accumulate into theories and seemingly unrelated objects turn out to be connected by a surprisingly small number of ideas.",
-            "This is probably why I care so much about mathematical beauty. Mathematics is, in a sense, the language of the universe, but what fascinates me is not simply its ability to describe reality. It is that mathematics can contain structures that are beautiful before they are useful, and sometimes before we even know what they are useful for.",
+
+            "At Fudan, mathematics gradually opened up into a much more fascinating world. It was no longer just a collection of problems to solve, but a language built from structures, definitions, and relationships. I began to see how ideas that seem unrelated at first can become connected through a small number of fundamental concepts.",
+
+            "This is probably why I care so much about mathematical beauty. Mathematics is, in a sense, the language of the universe, but what fascinates me is not only its ability to describe the world. It is also that mathematics can develop structures that are beautiful in their own right, sometimes long before we know what they might be useful for.",
+
           ],
+
         },
+
         {
-          heading: "The Prime Number Theorem",
+
+          heading: "Favourite Theorem & Course",
+
           paragraphs: [
-            "My favorite theorem is the Prime Number Theorem. Prime numbers arise almost inevitably from the most elementary questions about counting and divisibility. They are a very particular structure inside the integers, and the ordering of the integers gives us the possibility of asking a statistical question: how densely are the primes distributed?",
-            "What I find astonishing is where that question leads. Something as discrete and elementary as prime numbers eventually gives rise to a precise law of density, and that law is expressed through the natural logarithm. There is something almost unreasonable about the fact that such simple objects can hide such a deep pattern.",
+
+            "My favourite theorem is the Prime Number Theorem. Prime numbers arise from some of the most elementary questions about integers and divisibility, yet they lead to a remarkably deep question: how are the primes distributed among all integers? What I find astonishing is that this discrete and seemingly simple question eventually leads to a precise law of density, expressed through the natural logarithm. There is something deeply appealing about how a simple object can conceal such a rich pattern.",
+
+            "My favourite course has been topology, which gave me a different way of thinking about structure. I liked the process of gradually setting aside what is superficial and asking what actually remains. The most striking moment for me was the introduction of the fundamental group. It showed me how a geometric object can have an algebraic structure hidden inside it, and how geometry and algebra can illuminate each other in a very natural way.",
+
           ],
+
         },
+
         {
-          heading: "Topology",
-          paragraphs: [
-            "My favorite course has been topology. I liked the feeling of gradually removing everything that was superficial and asking what remained. Objects that look completely different can become the same under the right notion of equivalence. It is one of those subjects where abstraction does not feel like a loss of information, but a way of seeing more clearly.",
-          ],
-        },
-        {
+
           heading: "Full Circle",
+
           paragraphs: [
-            "There is also one small piece of symmetry in my mathematical life that I find amusing.",
-            "Years after that unsuccessful experience with mathematical competitions in high school, I went to UC Berkeley as an exchange student and found myself sitting in another competition room, this time for the Putnam. I somehow ended up in the top 100, and Berkeley's team received an Honorable Mention, ranked 6–10.",
-            "The result itself is not particularly important to me. What I remember more vividly is the fact that, after all those years, I had somehow returned to the same place where the story had once seemed to end.",
-            "Perhaps mathematics is one of the few things I can stay interested in without needing it to become practical.",
+
+            "There is also a small piece of symmetry in my mathematical life that I find interesting. Years after my unsuccessful experience with mathematical competitions in high school, I went to UC Berkeley as an exchange student and found myself sitting in another competition room, this time for the Putnam. I ended up in the top 100, and Berkeley's team received an Honorable Mention, ranked 6–10.",
+
+            "The result itself is not particularly important to me. What stayed with me was the realization that mathematics had never really been about winning or losing a competition. The competitions were only where the story began. What remained was a lasting interest in mathematics as a way of seeing patterns, uncovering structure, and understanding the world through its own language.",
+
           ],
+
         },
+
       ],
+
     },
+
   },
+
   {
     id: "deep-learning",
+
     title: "Deep Learning",
+
     image: "assets/fields/deep-learning.png",
+
     imageAlt: "Deep Learning field",
+
     metadata: {
-      lines: ["Focus", "Deep Learning", "Architecture", "Transformers", "Interest", "Theory"],
+      lines: ["Curiosity about LLMs", "Mathematical Structures", "Skepticism", "Research"],
     },
+
     detail: {
+
       template: "text",
+
       title: "Deep Learning",
-      subtitle: "Representations learned from data.",
+
+      subtitle: "Learning the underlying structure of data.",
+
       sections: [
+
         {
-          heading: "First Impressions",
+
+          heading: "Curiosity about LLMs",
+
           paragraphs: [
-            "My first encounter with neural networks was almost comically simple: MNIST, a small neural network, and handwritten digits.",
-            "I remember being impressed less by its elegance than by its violence. Give the model enough examples, apply backpropagation, adjust millions of little numbers, and somehow it learns to recognize what looks like a perfectly familiar object to a human being.",
-            "It felt strangely brute-force.",
+
+            "I first started learning deep learning because I was curious about how large language models actually work. The idea that a model could learn to understand and generate language from large amounts of data felt very different from the algorithms I had encountered before.",
+
+            "My first experiment was much simpler: training a small neural network on MNIST to recognize handwritten digits. It was a simple project, but it gave me an important first impression of deep learning. Instead of writing down the rules for how a problem should be solved, I was giving the model data and letting it discover the useful patterns on its own. It felt like a completely different way of thinking about algorithms.",
+
           ],
+
         },
+
         {
+
           heading: "Mathematical Structures",
+
           paragraphs: [
-            "LLMs were what initially brought me much deeper into deep learning, but they were not what made me stay. The part I became most interested in was the mathematics underneath the models: probability, geometry, continuous dynamics, and the way complicated transformations can sometimes be described through surprisingly clean structures.",
-            "This is especially true for diffusion models and flow matching. I find the connection between probability and SDEs or ODEs aesthetically pleasing in a way that is difficult to describe purely in terms of performance. There is something satisfying about replacing a complicated generative process with a trajectory through a mathematical space and watching a distribution gradually become another.",
-            "In that sense, my interest in deep learning has gradually moved from \"this is an incredibly powerful technology\" toward \"there is something beautiful happening underneath it.\"",
+
+            "LLMs were what initially brought me much deeper into deep learning, but they were not what made me stay. As I learned more, I became increasingly interested in the mathematical structures underneath these models: probability, geometry, continuous dynamics, and the ways complicated transformations can be described through relatively simple ideas.",
+
+            "I became especially interested in diffusion models and flow matching. I like the connection between generative modeling and stochastic or ordinary differential equations, where a complicated generation process can be viewed as a trajectory in a data space. There is something satisfying about seeing a distribution gradually transform into another through a process that can be described so cleanly.",
+
+            "Over time, my interest in deep learning has moved from simply seeing it as a powerful technology to wondering what is actually happening underneath the models, and why these methods work so well.",
+
           ],
+
         },
+
         {
+
           heading: "Skepticism",
+
           paragraphs: [
-            "That admiration also comes with some skepticism. I am not particularly convinced that increasingly complicated models automatically give us increasingly meaningful answers. A model can work remarkably well while remaining difficult to understand, and performance alone does not tell us what structure it has actually learned.",
-            "I am therefore interested in deep learning both because of what it can do and because I am not entirely convinced that we understand why it works as well as it sometimes does.",
+
+            "That interest also comes with some skepticism. More complicated models do not necessarily mean better understanding. A model can perform extremely well while still being difficult to interpret, and performance alone does not tell us exactly what structure it has learned.",
+
+            "This is part of what keeps me interested in deep learning. I care about what these models can do, but I am also curious about why they work, what they are really learning, and how much of that we can understand.",
+
           ],
+
         },
+
         {
+
           heading: "Research",
+
           paragraphs: [
-            "[Research projects to be added]",
+
+            "My research experience has given me the chance to look at deep learning from several different angles. In one project, I explored using discrete diffusion models to solve the Quadratic Assignment Problem. In another project, I worked on using flow matching models to generate fast neural network adversarial attacks. I also had an internship working on quantitative deep learning models.",
+
+            "Across these projects, I became more familiar with different parts of the deep learning pipeline, from model design and training to optimization and evaluation. More importantly, they helped me see deep learning as a broad field with many different ways to approach many different questions.",
+
           ],
+
         },
+
       ],
+
     },
+
   },
+
   {
     id: "quantitative-research",
+
     title: "Quant Research",
+
     image: "assets/fields/quantitative-research.jpg",
+
     imageAlt: "Quant Research field",
+
     metadata: {
-      lines: ["Interest", "Quantitative", "Focus", "Statistical Arbitrage", "Tools", "Python"],
+      lines: ["Why Quant", "Experience & Lessons", "Interpretability", "Current Work"],
     },
+
     detail: {
+
       template: "text",
+
       title: "Quant Research",
-      subtitle: "Markets, models, and statistical edge.",
+
+      subtitle: "Turning ideas into testable signals.",
+
       sections: [
+
         {
+
           heading: "Why Quant",
+
           paragraphs: [
-            "Quantitative research is one of the places where my interests in mathematics, statistics, machine learning, and computation collide with a very unforgiving environment.",
-            "A financial market does not care whether an idea is elegant. It does not care whether a model is fashionable, theoretically interesting, or technically sophisticated. It only gives you noisy observations and asks whether there is actually something there.",
-            "That is part of what attracts me to the field.",
+
+            "Quantitative research is one of the places where my interests in mathematics, statistics, and machine learning come together with a very unforgiving environment.",
+
+            "A financial market does not care whether an idea is elegant. It does not care whether a model is fashionable, theoretically interesting, or technically sophisticated. It gives you noisy observations and asks a much simpler question: is there actually something there?",
+
+            "That is part of what attracts me to the field. I like the idea that a hypothesis can be turned into something concrete, tested against data, and ultimately judged by evidence.",
+
           ],
+
         },
+
         {
+
           heading: "Experience & Lessons",
+
           paragraphs: [
-            "I previously spent some time working in quantitative research, where I used deep learning to build stock-selection models from alpha signals. It was a useful experience, but perhaps more importantly, it made me more skeptical of machine learning rather than less.",
-            "In a research environment, it is easy to become fascinated by a sophisticated model and then quietly let complexity stand in for evidence. In a financial environment, that habit becomes dangerous very quickly.",
-            "I have become increasingly interested in questions such as: What exactly is a model learning? Which information is actually responsible for its predictions? How much of its apparent performance is robust, and how much is an artifact of the data or the research process?",
+
+            "I previously had an internship in quantitative research, where I worked on using deep learning to build stock-selection models from alpha signals. It was a useful experience, but perhaps more importantly, it made me more cautious about machine learning rather than less.",
+
+            "In a research environment, it is easy to become fascinated by a sophisticated model and gradually let complexity stand in for evidence. In finance, that can become a problem very quickly.",
+
+            "I have become increasingly interested in questions such as: What exactly is a model learning? Which information is actually driving its predictions? How much of its apparent performance is robust, and how much is an artifact of the data or the research process?",
+
+            "I have not fully answered these questions yet, but I have come to believe that they matter more than simply designing a fancier model.",
+
           ],
+
         },
+
         {
+
           heading: "Interpretability",
+
           paragraphs: [
+
             "This is why I care about interpretability. Not because every model needs to be simple, but because I want to have some idea of what I am trusting.",
+
             "For me, quant research is less about finding a magical model and more about building a process through which ideas can be tested, questioned, rejected, and improved.",
+
+            "I am also exploring statistical and machine learning methods that often seem much simpler, rather than trying to solve every problem by putting it into a neural network.",
+
           ],
+
         },
+
         {
+
           heading: "Current Work",
+
           paragraphs: [
+
             "I am currently building my own quantitative research system. It is still very much a work in progress, which is probably the most honest description of it.",
+
+            "But there is one requirement I am quite certain about: I need to understand what I am actually doing.",
+
           ],
+
         },
+
       ],
+
     },
+
   },
+
   {
-    id: "video-games",
-    title: "Video Games",
-    image: "assets/fields/video-games.jpg",
-    imageAlt: "Video Games field",
-    metadata: {
-      lines: ["Playing", "Indie Games", "Genre", "Roguelikes", "Interest", "Game Design"],
+    "id": "video-games",
+    "title": "Video Games",
+    "image": "assets/fields/video-games.jpg",
+    "imageAlt": "Video Games field",
+    "metadata": {
+      "lines": [
+        "More than Relaxation",
+        "FromSoftware",
+        "Death Stranding",
+        "Other Favorites",
+        "Physical Collecting"
+      ]
     },
-    detail: {
-      template: "text-gallery",
-      title: "Video Games",
-      subtitle: "Interactive systems, emergent complexity.",
-      sections: [
+    "detail": {
+      "template": "text-gallery",
+      "title": "Video Games",
+      "subtitle": "Interactive systems, emergent complexity.",
+      "sections": [
         {
-          heading: "Immersion",
-          paragraphs: [
-            "Games are probably my most important way of resting.",
-            "I like them because they allow me to spend a few hours inside a world that someone else imagined in extraordinary detail. A good game does not simply tell me about a place. It makes me inhabit it.",
-            "This is one reason I am especially drawn to games with a strong sense of authorship.",
-          ],
+          "heading": "More than Relaxation",
+          "paragraphs": [
+            "For me, playing games is about much more than just relaxing. More often than not, it is a way to experience entirely different worlds in the most comprehensive way possible, allowing me to live out countless different lives within our limited time."
+          ]
         },
         {
-          heading: "FromSoftware",
-          paragraphs: [
-            "I love FromSoftware's games, especially *Dark Souls III* and *Elden Ring*. What fascinates me is not simply their difficulty, but how uncompromisingly the entire world is designed around a particular aesthetic.",
-            "Their artists seem willing to push medieval darkness, grotesque forms, monumental architecture, decay, beauty, and absurdity as far as their imagination allows. The maps are designed with remarkable precision, and the difficulty is not softened simply to make the experience more convenient.",
-            "That lack of compromise matters.",
-            "Exploration becomes meaningful precisely because the world does not constantly reassure you. You have to look, remember, get lost, fail, and eventually understand the place you are in. The difficulty is therefore not just a mechanical challenge. It becomes part of the atmosphere of the world itself.",
-          ],
+          "heading": "FromSoftware",
+          "paragraphs": [
+            "FromSoftware's games are always fascinating yet dangerous. What captivates me the most is their incredible environmental design and how meticulously they polish the exploration experience.",
+            "Their artists have a deeply imaginative way of expressing architectural structures. They often break the laws of physics to create breathtaking, monumental buildings, pushing medieval darkness, decay, and grotesque beauty as far as their imagination allows.",
+            "When it comes to exploration, they are masters at guiding you through subtle environmental details. Yet, at the same time, the game constantly reminds you that you are in a harsh and cruel world. You have to observe, get lost, fail, and eventually learn to survive, making every discovery feel incredibly rewarding."
+          ]
         },
         {
-          heading: "Death Stranding",
-          paragraphs: [
-            "Hideo Kojima's *Death Stranding* is almost the opposite kind of experience, but I love it for a related reason.",
-            "The central idea of connection could easily have remained a narrative theme. Instead, Kojima turns it into a system that the player actually experiences. Asynchronous multiplayer, shared structures, likes, and small acts of help allow strangers to leave something useful behind for one another without ever directly meeting.",
-            "You do not merely hear that people are connected. You feel it.",
-            "That is what I find remarkable about *Death Stranding*: it turns an abstract idea about human connection into a concrete game mechanic, and somehow makes the simple act of helping an unknown player feel genuinely rewarding.",
-          ],
+          "heading": "Death Stranding",
+          "paragraphs": [
+            "Hideo Kojima's Death Stranding offers a completely different kind of experience, but I love it just as much.",
+            "Instead of just using \"connection\" as a narrative theme, Kojima turns it into something you actually experience. Through asynchronous multiplayer, shared structures, and small acts of kindness like leaving a ladder or giving a \"like,\" strangers can help each other without ever meeting face-to-face. You don't just hear that people are connected—you truly feel it.",
+            "That is what makes the game so special to me. It takes an abstract idea about human connection and turns it into a real, rewarding mechanic, making the simple act of helping a stranger feel incredibly meaningful."
+          ]
         },
         {
-          heading: "Other Favorites",
-          paragraphs: [
-            "I also love *The Last of Us Part I*, *Gran Turismo 7*, *Stellar Blade*, and a number of smaller independent games such as *Balatro* and *What Remains of Edith Finch*. They are very different games, but each has something I value: a strong visual identity, elegant mechanics, an unusual perspective, or simply a world that feels deliberately made.",
-          ],
+          "heading": "Other Favorites",
+          "paragraphs": [
+            "I also love The Last of Us Part I, Gran Turismo, Stellar Blade, and a number of smaller independent games such as Balatro and What Remains of Edith Finch. They are very different games, but they all carry a strong authorial vision. Whether it's through unique gameplay mechanics, striking art styles, gripping narratives, or beautiful music, each of them offers me a truly unique and memorable experience."
+          ]
         },
         {
-          heading: "Physical Collecting",
-          paragraphs: [
-            "Recently, I have also started collecting physical game copies.",
-            "This is not really about nostalgia, nor is it about collecting for the sake of having more things. I increasingly find the idea of physically owning the things I love strangely comforting in a world where almost everything has become a subscription, a service, or a server somewhere.",
+          "heading": "Physical Collecting",
+          "paragraphs": [
             "The more abstract and digital my academic life becomes, the more I find myself drawn to tangible things in everyday life.",
-            "Perhaps that is one reason I like both games and music in physical form. Data is convenient. Objects have presence.",
-          ],
+            "To explain why I start collecting physical games and CDs, I want to borrow a quote from Hideo Kojima that resonates deeply with me: \"Eventually, even digital data itself will become something that individuals can no longer own independently. If some major change or accident were to occur in the world—whether involving nations, governments, ideologies, or social trends—it could suddenly become impossible to access that data. I would no longer be free to access the many films, books, and pieces of music I have loved. I would become one of those who possess nothing. That frightens me. This isn’t about materialism or the desire to own things.\""
+          ]
+        }
+      ],
+      "images": [
+        {
+          "src": "assets/detail/video-games-01.png",
+          "alt": "Game screenshot placeholder one"
         },
-      ],
-      images: [
-        { src: "assets/detail/video-games-01.png", alt: "Game screenshot placeholder one" },
-        { src: "assets/detail/video-games-02.png", alt: "Game screenshot placeholder two" },
-        { src: "assets/detail/video-games-03.png", alt: "Game screenshot placeholder three" },
-      ],
-    },
+        {
+          "src": "assets/detail/video-games-02.png",
+          "alt": "Game screenshot placeholder two"
+        },
+        {
+          "src": "assets/detail/video-games-03.png",
+          "alt": "Game screenshot placeholder three"
+        }
+      ]
+    }
   },
+
   {
-    id: "rock-music",
-    title: "Rock Music",
-    image: "assets/fields/rock-music.png",
-    imageAlt: "Rock Music field",
-    metadata: {
-      lines: ["Listening", "Rock & Metal", "Playing", "Electric Guitar", "Favorites", "Progressive"],
+    "id": "rock-music",
+    "title": "Rock Music",
+    "image": "assets/fields/rock-music.png",
+    "imageAlt": "Rock Music field",
+    "metadata": {
+      "lines": [
+        "What I Listen For",
+        "Favorite Band & Album",
+        "The Artist's Signature"
+      ]
     },
-    detail: {
-      template: "text-gallery",
-      title: "Rock Music",
-      subtitle: "Loud guitars, tight riffs, deliberate chaos.",
-      sections: [
+    "detail": {
+      "template": "text-gallery",
+      "title": "Rock Music",
+      "subtitle": "Attitude, atmosphere, and a unique way of seeing the world.",
+      "sections": [
         {
-          heading: "What I Listen For",
-          paragraphs: [
-            "Rock music is another way I encounter worlds created by other people.",
-            "I do not listen to rock simply for the guitars, distortion, or volume. What interests me more is the attitude behind it: the willingness to say something about society, alienation, politics, memory, or simply the strange feeling of being alive.",
-          ],
+          "heading": "What I Listen For",
+          "paragraphs": [
+            "Rock music is another way for me to encounter worlds created by other people.",
+            "To me, rock is not only about heavy guitars, distortion, or turning up the volume. What truly draws me in is the attitude behind it—the willingness to speak up about society, alienation, politics, memory, love, or simply the beautiful, strange feeling of just being alive."
+          ]
         },
         {
-          heading: "Pink Floyd",
-          paragraphs: [
-            "My favorite band is Pink Floyd, and *Wish You Were Here* is probably the album I return to most often.",
-            "What I love about Pink Floyd is that the music rarely feels like a collection of songs. It feels like an atmosphere, an argument, or sometimes an entire landscape. The sound is inseparable from the ideas behind it.",
-          ],
+          "heading": "Favorite Band & Album",
+          "paragraphs": [
+            "My favorite band is undoubtedly Pink Floyd, and Wish You Were Here is the album I find myself returning to the most.",
+            "What I love so much about Pink Floyd is that their music rarely feels like just a collection of songs. Instead, it feels like an atmosphere, a conversation, or even a vast landscape. The sound is completely inseparable from the ideas behind it."
+          ]
         },
         {
-          heading: "The Collection",
-          paragraphs: [
-            "I have also spent a lot of time with records by The Beatles, Guns N' Roses, Eagles, Led Zeppelin, Radiohead, Oasis, King Crimson, Nirvana, AC/DC, and many others.",
-            "My taste is not particularly systematic. Some albums are there because of their musicianship, some because of their atmosphere, and some simply because they stayed with me for no especially rational reason.",
-          ],
-        },
-        {
-          heading: "Authorship",
-          paragraphs: [
-            "I think this is ultimately similar to what I look for in games and films.",
-            "A piece of music is more interesting to me when I can feel the person behind it: a particular way of seeing the world, expressed through sound.",
-            "I like things with authorship.",
-          ],
-        },
+          "heading": "The Artist's Signature",
+          "paragraphs": [
+            "I think my taste in music is ultimately very similar to what I look for in video games and films.",
+            "A piece of music becomes so much more interesting to me when I can truly feel the person behind it—a very personal, specific way of seeing the world, expressed entirely through sound."
+          ]
+        }
       ],
-      images: [
-        { src: "assets/detail/rock-music-01.png", alt: "Album cover placeholder one" },
-        { src: "assets/detail/rock-music-02.png", alt: "Album cover placeholder two" },
-        { src: "assets/detail/rock-music-03.png", alt: "Album cover placeholder three" },
-      ],
-    },
+      "images": [
+        {
+          "src": "assets/detail/rock-music-01.png",
+          "alt": "Album cover placeholder one"
+        },
+        {
+          "src": "assets/detail/rock-music-02.png",
+          "alt": "Album cover placeholder two"
+        },
+        {
+          "src": "assets/detail/rock-music-03.png",
+          "alt": "Album cover placeholder three"
+        }
+      ]
+    }
   },
+
   {
-    id: "other-interests",
-    title: "Other Interests",
-    image: "assets/fields/other-interests.jpg",
-    imageAlt: "Other Interests field",
-    metadata: {
-      lines: ["Topics", "Computer Graphics", "AI Agents", "Hobbies", "Card Magic", "Speedcubing"],
+    "id": "other-interests",
+    "title": "Other Interests",
+    "image": "assets/fields/other-interests.jpg",
+    "imageAlt": "Other Interests field",
+    "metadata": {
+      "lines": [
+        "Computer Graphics",
+        "AI Agents",
+        "Cinema",
+        "Fingertip Hobbies"
+      ]
     },
-    detail: {
-      template: "text",
-      title: "Other Interests",
-      subtitle: "A collection of pursuits outside the main tracks.",
-      sections: [
+    "detail": {
+      "template": "text",
+      "title": "Other Interests",
+      "subtitle": "A collection of pursuits outside the main tracks.",
+      "sections": [
         {
-          heading: "",
-          paragraphs: [
-            "This is probably the least finished part of this website.",
-            "Some interests have lasted for years; others appeared only recently and may disappear again in a few months. I like that distinction, so I am leaving some things here in an unfinished state.",
-          ],
+          "heading": "",
+          "paragraphs": [
+            "This is probably the most 'work-in-progress' part of my website. Some of these interests have stuck with me for years, while others are recent fascinations that might fade away in a few months."
+          ]
         },
         {
-          heading: "Computer Graphics",
-          paragraphs: [
-            "Computer graphics is one of them. I became interested in it through games and gradually started wondering how the worlds I spend so much time exploring are actually constructed underneath the surface: geometry, rendering, simulation, and all the mathematics that turns code into something visual.",
-            "My C++ is not yet good enough to make this as easy as I would like, which is probably a project in itself.",
-          ],
+          "heading": "Computer Graphics",
+          "paragraphs": [
+            "My fascination with computer graphics grew naturally out of my love for video games. I found myself wondering how the worlds I spent so much time exploring were actually built beneath the surface. It is amazing to dive into the geometry, rendering, simulation, and all the underlying math that magically turns lines of code into breathtaking visuals."
+          ]
         },
         {
-          heading: "AI Agents",
-          paragraphs: [
-            "I am also interested in AI agents, especially the possibility of building an RPG system driven by LLMs. The question that interests me is not simply whether an LLM can play a character, but whether a collection of language-driven systems can create a world that feels persistent, responsive, and alive.",
-          ],
+          "heading": "AI Agents",
+          "paragraphs": [
+            "I have also been really curious about AI agents lately, particularly the idea of building an RPG system driven entirely by Large Language Models (LLMs). For me, the exciting question isn't just whether an AI can roleplay a character, but whether a network of these language-driven systems can actually simulate a world that feels persistent, truly responsive, and alive."
+          ]
         },
         {
-          heading: "Cinema",
-          paragraphs: [
-            "Cinema is another form of immersion I enjoy. I like sitting in a dark theater, putting away everything else, and giving a film my full attention for a couple of hours. The isolation is part of the experience.",
-          ],
+          "heading": "Cinema",
+          "paragraphs": [
+            "Cinema is another form of immersion I deeply enjoy. There is something incredibly special about sitting in a dark theater, putting away my phone, and giving a film my undivided attention for a few hours. That sense of isolation is a beautiful part of the experience.",
+            "To get the ultimate immersive experience, I even made the trip to authentic IMAX GT screens three times: watching Dune: Part Two at the China National Film Museum in Beijing, F1 at the Shenyang Science Center, and Avatar 3 at the AMC Metreon 16 in San Francisco."
+          ]
         },
         {
-          heading: "Small Systems",
-          paragraphs: [
-            "I also occasionally become obsessed with things that are much less serious: card tricks, Rubik's cubes, and similar little systems that are satisfying to understand and manipulate.",
-            "And I want to learn electric guitar.",
-          ],
+          "heading": "Fingertip Hobbies",
+          "paragraphs": [
+            "I have always enjoyed keeping my hands busy. I have been playing with Rubik's cubes since I was a kid, but more recently, I've fallen down the rabbit hole of card magic and sleight of hand. There is something deeply satisfying about understanding and manipulating these tiny, intricate systems right at my fingertips."
+          ]
         },
         {
-          heading: "",
-          paragraphs: [
-            "Some of these interests may eventually become serious projects. Some probably will not.",
-            "That is fine. Not everything needs to become useful.",
-          ],
-        },
-      ],
-    },
+          "heading": "",
+          "paragraphs": [
+            "Who knows? Some of these curiosities might eventually grow into serious projects, and some probably won't.",
+            "And that is completely fine. Not everything we do in life has to be 'useful'."
+          ]
+        }
+      ]
+    }
   },
+
 ];
 
 export function getFieldById(id: string): Field | undefined {
