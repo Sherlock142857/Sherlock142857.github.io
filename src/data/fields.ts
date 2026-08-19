@@ -427,17 +427,21 @@ export const fields: Field[] = [
       ],
       "images": [
         {
-          "src": "assets/detail/rock-music-01.png",
+          "src": "assets/detail/wishyouwerehere.jpg",
           "alt": "Album cover placeholder one"
         },
         {
-          "src": "assets/detail/rock-music-02.png",
+          "src": "assets/detail/okcomputer.jpg",
           "alt": "Album cover placeholder two"
         },
         {
-          "src": "assets/detail/rock-music-03.png",
+          "src": "assets/detail/thewall.jpg",
           "alt": "Album cover placeholder three"
-        }
+        },
+        {
+          "src": "assets/detail/gunsnroses.jpg",
+          "alt": "Album cover placeholder three"
+        },
       ]
     }
   },
