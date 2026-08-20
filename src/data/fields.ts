@@ -49,6 +49,199 @@ export const fields: Field[] = [
       ],
     },
   },
+
+  {
+    id: "video-games",
+    title: "Video Games",
+    image: "assets/fields/video-games.jpg",
+    imageAlt: "Video Games field",
+    metadata: {
+      lines: [
+        "More than Relaxation",
+        "FromSoftware",
+        "Death Stranding",
+        "Other Favorites",
+        "Physical Collecting",
+      ],
+    },
+    detail: {
+      template: "text-gallery",
+      title: "Video Games",
+      subtitle: "Interactive systems, emergent complexity.",
+      sections: [
+        {
+          heading: "More than Relaxation",
+          paragraphs: [
+            "For me, playing games is about much more than just relaxing. More often than not, it is a way to experience entirely different worlds in the most comprehensive way possible, allowing me to live out countless different lives within our limited time.",
+          ],
+        },
+        {
+          heading: "FromSoftware",
+          paragraphs: [
+            "FromSoftware’s games are always fascinating yet dangerous. What captivates me the most is their incredible environmental design and how meticulously they polish the exploration experience.",
+            "Their artists have a deeply imaginative way of expressing architectural structures. They often break the laws of physics to create breathtaking, monumental buildings, pushing medieval darkness, decay, and grotesque beauty as far as their imagination allows.",
+            "When it comes to exploration, they are masters at guiding you through subtle environmental details. Yet, at the same time, the game constantly reminds you that you are in a harsh and cruel world. You have to observe, get lost, fail, and eventually learn to survive, making every discovery feel incredibly rewarding.",
+          ],
+        },
+        {
+          heading: "Death Stranding",
+          paragraphs: [
+            "Hideo Kojima’s Death Stranding offers a completely different kind of experience, but I love it just as much.",
+            "Instead of just using \"connection\" as a narrative theme, Kojima turns it into something you actually experience. Through asynchronous multiplayer, shared structures, and small acts of kindness like leaving a ladder or giving a \"like,\" strangers can help each other without ever meeting face-to-face. You don’t just hear that people are connected—you truly feel it.",
+            "That is what makes the game so special to me. It takes an abstract idea about human connection and turns it into a real, rewarding mechanic, making the simple act of helping a stranger feel incredibly meaningful.",
+          ],
+        },
+        {
+          heading: "Other Favorites",
+          paragraphs: [
+            "I also love The Last of Us Part I, Gran Turismo, Stellar Blade, and a number of smaller independent games such as Balatro and What Remains of Edith Finch. They are very different games, but they all carry a strong authorial vision. Whether it’s through unique gameplay mechanics, striking art styles, gripping narratives, or beautiful music, each of them offers me a truly unique and memorable experience.",
+          ],
+        },
+        {
+          heading: "Physical Collecting",
+          paragraphs: [
+            "The more abstract and digital my academic life becomes, the more I find myself drawn to tangible things in everyday life. To explain why I start collecting physical games and CDs, I want to borrow a quote from Hideo Kojima that resonates deeply with me.",
+            "\"Eventually, even digital data itself will become something that individuals can no longer own independently. If some major change or accident were to occur in the world—whether involving nations, governments, ideologies, or social trends—it could suddenly become impossible to access that data. I would no longer be free to access the many films, books, and pieces of music I have loved. I would become one of those who possess nothing. That frightens me. This isn’t about materialism or the desire to own things.\"",
+          ],
+        },
+      ],
+      images: [
+        {
+          src: "assets/detail/video-games-01.png",
+          alt: "Game screenshot placeholder one",
+        },
+        {
+          src: "assets/detail/video-games-02.png",
+          alt: "Game screenshot placeholder two",
+        },
+        {
+          src: "assets/detail/video-games-03.png",
+          alt: "Game screenshot placeholder three",
+        },
+      ],
+    },
+  },
+
+  {
+    id: "rock-music",
+    title: "Rock Music",
+    image: "assets/fields/rock-music.png",
+    imageAlt: "Rock Music field",
+    metadata: {
+      lines: [
+        "What I Listen For",
+        "Favorite Band & Album",
+        "The Artist's Signature",
+      ],
+    },
+    detail: {
+      template: "text-gallery",
+      title: "Rock Music",
+      subtitle: "Attitude, atmosphere, and a unique way of seeing the world.",
+      sections: [
+        {
+          heading: "What I Listen For",
+          paragraphs: [
+            "Rock music is another way for me to encounter worlds created by other people.",
+            "To me, rock is not only about heavy guitars, distortion, or turning up the volume. What truly draws me in is the attitude behind it—the willingness to speak up about society, alienation, politics, memory, love, or simply the beautiful, strange feeling of just being alive.",
+          ],
+        },
+        {
+          heading: "Favorite Band & Album",
+          paragraphs: [
+            "My favorite band is undoubtedly Pink Floyd, and Wish You Were Here is the album I find myself returning to the most.",
+            "What I love so much about Pink Floyd is that their music rarely feels like just a collection of songs. Instead, it feels like an atmosphere, a conversation, or even a vast landscape. The sound is completely inseparable from the ideas behind it.",
+          ],
+        },
+        {
+          heading: "The Artist's Signature",
+          paragraphs: [
+            "I think my taste in music is ultimately very similar to what I look for in video games and films.",
+            "A piece of music becomes so much more interesting to me when I can truly feel the person behind it—a very personal, specific way of seeing the world, expressed entirely through sound.",
+          ],
+        },
+      ],
+      images: [
+        {
+          src: "assets/detail/wishyouwerehere.jpg",
+          alt: "Album cover placeholder one",
+        },
+        {
+          src: "assets/detail/okcomputer.jpg",
+          alt: "Album cover placeholder two",
+        },
+        {
+          src: "assets/detail/thewall.jpg",
+          alt: "Album cover placeholder three",
+        },
+        {
+          src: "assets/detail/gunsnroses.jpg",
+          alt: "Album cover placeholder three",
+        },
+      ],
+    },
+  },
+
+  {
+    id: "other-interests",
+    title: "Other Interests",
+    image: "assets/fields/other-interests.png",
+    imageAlt: "Other Interests field",
+    metadata: {
+      lines: [
+        "Computer Graphics",
+        "AI Agents",
+        "Cinema",
+        "Fingertip Hobbies",
+      ],
+    },
+    detail: {
+      template: "text",
+      title: "Other Interests",
+      subtitle: "A collection of pursuits outside the main tracks.",
+      sections: [
+        {
+          heading: "",
+          paragraphs: [
+            "This is probably the most 'work-in-progress' part of my website. Some of these interests have stuck with me for years, while others are recent fascinations that might fade away in a few months.",
+          ],
+        },
+        {
+          heading: "Computer Graphics",
+          paragraphs: [
+            "My fascination with computer graphics grew naturally out of my love for video games. I found myself wondering how the worlds I spent so much time exploring were actually built beneath the surface. It is amazing to dive into the geometry, rendering, simulation, and all the underlying math that magically turns lines of code into breathtaking visuals.",
+          ],
+        },
+        {
+          heading: "AI Agents",
+          paragraphs: [
+            "I have also been really curious about AI agents lately, particularly the idea of building an RPG system driven entirely by Large Language Models (LLMs). For me, the exciting question isn't just whether an AI can roleplay a character, but whether a network of these language-driven systems can actually simulate a world that feels persistent, truly responsive, and alive.",
+          ],
+        },
+        {
+          heading: "Cinema",
+          paragraphs: [
+            "Cinema is another form of immersion I deeply enjoy. There is something incredibly special about sitting in a dark theater, putting away my phone, and giving a film my undivided attention for a few hours. That sense of isolation is a beautiful part of the experience.",
+            "To get the ultimate immersive experience, I even made the trip to authentic IMAX GT screens three times: watching Dune: Part Two at the China National Film Museum in Beijing, F1 at the Shenyang Science Center, and Avatar 3 at the AMC Metreon 16 in San Francisco.",
+          ],
+        },
+        {
+          heading: "Fingertip Hobbies",
+          paragraphs: [
+            "I have always enjoyed keeping my hands busy. I have been playing with Rubik's cubes since I was a kid, but more recently, I've fallen down the rabbit hole of card magic and sleight of hand. There is something deeply satisfying about understanding and manipulating these tiny, intricate systems right at my fingertips.",
+          ],
+        },
+        {
+          heading: "",
+          paragraphs: [
+            "Who knows? Some of these curiosities might eventually grow into serious projects, and some probably won't.",
+            "And that is completely fine. Not everything we do in life has to be 'useful'.",
+          ],
+        },
+      ],
+    },
+  },
+
   {
         id: "mathematics",
 
@@ -92,9 +285,9 @@ export const fields: Field[] = [
 
           paragraphs: [
 
-            "At Fudan, mathematics gradually opened up into a much more fascinating world. It was no longer just a collection of problems to solve, but a language built from structures, definitions, and relationships. I began to see how ideas that seem unrelated at first can become connected through a small number of fundamental concepts.",
+            "At Fudan, mathematics gradually opened up into a much more fascinating world. It was no longer just a collection of problems to solve, but a language built from structures, definitions, and relationships. I came to see that this very ability—to unify diverse ideas through a handful of elegant principles—is what makes mathematics so profoundly beautiful.",
 
-            "This is probably why I care so much about mathematical beauty. Mathematics is, in a sense, the language of the universe, but what fascinates me is not only its ability to describe the world. It is also that mathematics can develop structures that are beautiful in their own right, sometimes long before we know what they might be useful for.",
+            "This is probably why I care so much about mathematical beauty. Mathematics is, in a sense, the language of the universe. What fascinates me is not only its ability to describe the world, it is also that mathematics can develop structures that are beautiful in their own right, sometimes long before we know what they might be useful for.",
 
           ],
 
@@ -180,8 +373,6 @@ export const fields: Field[] = [
             "LLMs were what initially brought me much deeper into deep learning, but they were not what made me stay. As I learned more, I became increasingly interested in the mathematical structures underneath these models: probability, geometry, continuous dynamics, and the ways complicated transformations can be described through relatively simple ideas.",
 
             "I became especially interested in diffusion models and flow matching. I like the connection between generative modeling and stochastic or ordinary differential equations, where a complicated generation process can be viewed as a trajectory in a data space. There is something satisfying about seeing a distribution gradually transform into another through a process that can be described so cleanly.",
-
-            "Over time, my interest in deep learning has moved from simply seeing it as a powerful technology to wondering what is actually happening underneath the models, and why these methods work so well.",
 
           ],
 
@@ -284,9 +475,7 @@ export const fields: Field[] = [
 
           paragraphs: [
 
-            "This is why I care about interpretability. Not because every model needs to be simple, but because I want to have some idea of what I am trusting.",
-
-            "For me, quant research is less about finding a magical model and more about building a process through which ideas can be tested, questioned, rejected, and improved.",
+            "This is why I care about interpretability. Not because every model needs to be simple, but because I want to have some idea of what I am trusting. For me, quant research is more about building a process through which ideas can be tested, questioned, rejected, and improved.",
 
             "I am also exploring statistical and machine learning methods that often seem much simpler, rather than trying to solve every problem by putting it into a neural network.",
 
@@ -312,198 +501,6 @@ export const fields: Field[] = [
 
     },
 
-  },
-
-  {
-    "id": "video-games",
-    "title": "Video Games",
-    "image": "assets/fields/video-games.jpg",
-    "imageAlt": "Video Games field",
-    "metadata": {
-      "lines": [
-        "More than Relaxation",
-        "FromSoftware",
-        "Death Stranding",
-        "Other Favorites",
-        "Physical Collecting"
-      ]
-    },
-    "detail": {
-      "template": "text-gallery",
-      "title": "Video Games",
-      "subtitle": "Interactive systems, emergent complexity.",
-      "sections": [
-        {
-          "heading": "More than Relaxation",
-          "paragraphs": [
-            "For me, playing games is about much more than just relaxing. More often than not, it is a way to experience entirely different worlds in the most comprehensive way possible, allowing me to live out countless different lives within our limited time."
-          ]
-        },
-        {
-          "heading": "FromSoftware",
-          "paragraphs": [
-            "FromSoftware's games are always fascinating yet dangerous. What captivates me the most is their incredible environmental design and how meticulously they polish the exploration experience.",
-            "Their artists have a deeply imaginative way of expressing architectural structures. They often break the laws of physics to create breathtaking, monumental buildings, pushing medieval darkness, decay, and grotesque beauty as far as their imagination allows.",
-            "When it comes to exploration, they are masters at guiding you through subtle environmental details. Yet, at the same time, the game constantly reminds you that you are in a harsh and cruel world. You have to observe, get lost, fail, and eventually learn to survive, making every discovery feel incredibly rewarding."
-          ]
-        },
-        {
-          "heading": "Death Stranding",
-          "paragraphs": [
-            "Hideo Kojima's Death Stranding offers a completely different kind of experience, but I love it just as much.",
-            "Instead of just using \"connection\" as a narrative theme, Kojima turns it into something you actually experience. Through asynchronous multiplayer, shared structures, and small acts of kindness like leaving a ladder or giving a \"like,\" strangers can help each other without ever meeting face-to-face. You don't just hear that people are connected—you truly feel it.",
-            "That is what makes the game so special to me. It takes an abstract idea about human connection and turns it into a real, rewarding mechanic, making the simple act of helping a stranger feel incredibly meaningful."
-          ]
-        },
-        {
-          "heading": "Other Favorites",
-          "paragraphs": [
-            "I also love The Last of Us Part I, Gran Turismo, Stellar Blade, and a number of smaller independent games such as Balatro and What Remains of Edith Finch. They are very different games, but they all carry a strong authorial vision. Whether it's through unique gameplay mechanics, striking art styles, gripping narratives, or beautiful music, each of them offers me a truly unique and memorable experience."
-          ]
-        },
-        {
-          "heading": "Physical Collecting",
-          "paragraphs": [
-            "The more abstract and digital my academic life becomes, the more I find myself drawn to tangible things in everyday life.",
-            "To explain why I start collecting physical games and CDs, I want to borrow a quote from Hideo Kojima that resonates deeply with me: \"Eventually, even digital data itself will become something that individuals can no longer own independently. If some major change or accident were to occur in the world—whether involving nations, governments, ideologies, or social trends—it could suddenly become impossible to access that data. I would no longer be free to access the many films, books, and pieces of music I have loved. I would become one of those who possess nothing. That frightens me. This isn’t about materialism or the desire to own things.\""
-          ]
-        }
-      ],
-      "images": [
-        {
-          "src": "assets/detail/video-games-01.png",
-          "alt": "Game screenshot placeholder one"
-        },
-        {
-          "src": "assets/detail/video-games-02.png",
-          "alt": "Game screenshot placeholder two"
-        },
-        {
-          "src": "assets/detail/video-games-03.png",
-          "alt": "Game screenshot placeholder three"
-        }
-      ]
-    }
-  },
-
-  {
-    "id": "rock-music",
-    "title": "Rock Music",
-    "image": "assets/fields/rock-music.png",
-    "imageAlt": "Rock Music field",
-    "metadata": {
-      "lines": [
-        "What I Listen For",
-        "Favorite Band & Album",
-        "The Artist's Signature"
-      ]
-    },
-    "detail": {
-      "template": "text-gallery",
-      "title": "Rock Music",
-      "subtitle": "Attitude, atmosphere, and a unique way of seeing the world.",
-      "sections": [
-        {
-          "heading": "What I Listen For",
-          "paragraphs": [
-            "Rock music is another way for me to encounter worlds created by other people.",
-            "To me, rock is not only about heavy guitars, distortion, or turning up the volume. What truly draws me in is the attitude behind it—the willingness to speak up about society, alienation, politics, memory, love, or simply the beautiful, strange feeling of just being alive."
-          ]
-        },
-        {
-          "heading": "Favorite Band & Album",
-          "paragraphs": [
-            "My favorite band is undoubtedly Pink Floyd, and Wish You Were Here is the album I find myself returning to the most.",
-            "What I love so much about Pink Floyd is that their music rarely feels like just a collection of songs. Instead, it feels like an atmosphere, a conversation, or even a vast landscape. The sound is completely inseparable from the ideas behind it."
-          ]
-        },
-        {
-          "heading": "The Artist's Signature",
-          "paragraphs": [
-            "I think my taste in music is ultimately very similar to what I look for in video games and films.",
-            "A piece of music becomes so much more interesting to me when I can truly feel the person behind it—a very personal, specific way of seeing the world, expressed entirely through sound."
-          ]
-        }
-      ],
-      "images": [
-        {
-          "src": "assets/detail/wishyouwerehere.jpg",
-          "alt": "Album cover placeholder one"
-        },
-        {
-          "src": "assets/detail/okcomputer.jpg",
-          "alt": "Album cover placeholder two"
-        },
-        {
-          "src": "assets/detail/thewall.jpg",
-          "alt": "Album cover placeholder three"
-        },
-        {
-          "src": "assets/detail/gunsnroses.jpg",
-          "alt": "Album cover placeholder three"
-        },
-      ]
-    }
-  },
-
-  {
-    "id": "other-interests",
-    "title": "Other Interests",
-    "image": "assets/fields/other-interests.png",
-    "imageAlt": "Other Interests field",
-    "metadata": {
-      "lines": [
-        "Computer Graphics",
-        "AI Agents",
-        "Cinema",
-        "Fingertip Hobbies"
-      ]
-    },
-    "detail": {
-      "template": "text",
-      "title": "Other Interests",
-      "subtitle": "A collection of pursuits outside the main tracks.",
-      "sections": [
-        {
-          "heading": "",
-          "paragraphs": [
-            "This is probably the most 'work-in-progress' part of my website. Some of these interests have stuck with me for years, while others are recent fascinations that might fade away in a few months."
-          ]
-        },
-        {
-          "heading": "Computer Graphics",
-          "paragraphs": [
-            "My fascination with computer graphics grew naturally out of my love for video games. I found myself wondering how the worlds I spent so much time exploring were actually built beneath the surface. It is amazing to dive into the geometry, rendering, simulation, and all the underlying math that magically turns lines of code into breathtaking visuals."
-          ]
-        },
-        {
-          "heading": "AI Agents",
-          "paragraphs": [
-            "I have also been really curious about AI agents lately, particularly the idea of building an RPG system driven entirely by Large Language Models (LLMs). For me, the exciting question isn't just whether an AI can roleplay a character, but whether a network of these language-driven systems can actually simulate a world that feels persistent, truly responsive, and alive."
-          ]
-        },
-        {
-          "heading": "Cinema",
-          "paragraphs": [
-            "Cinema is another form of immersion I deeply enjoy. There is something incredibly special about sitting in a dark theater, putting away my phone, and giving a film my undivided attention for a few hours. That sense of isolation is a beautiful part of the experience.",
-            "To get the ultimate immersive experience, I even made the trip to authentic IMAX GT screens three times: watching Dune: Part Two at the China National Film Museum in Beijing, F1 at the Shenyang Science Center, and Avatar 3 at the AMC Metreon 16 in San Francisco."
-          ]
-        },
-        {
-          "heading": "Fingertip Hobbies",
-          "paragraphs": [
-            "I have always enjoyed keeping my hands busy. I have been playing with Rubik's cubes since I was a kid, but more recently, I've fallen down the rabbit hole of card magic and sleight of hand. There is something deeply satisfying about understanding and manipulating these tiny, intricate systems right at my fingertips."
-          ]
-        },
-        {
-          "heading": "",
-          "paragraphs": [
-            "Who knows? Some of these curiosities might eventually grow into serious projects, and some probably won't.",
-            "And that is completely fine. Not everything we do in life has to be 'useful'."
-          ]
-        }
-      ]
-    }
   },
 
 ];
