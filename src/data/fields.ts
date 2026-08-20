@@ -20,30 +20,30 @@ export const fields: Field[] = [
     image: "assets/fields/about-me.jpg",
     imageAlt: "About Me introduction",
     metadata: {
-      lines: ["Student", "Fudan University", "Major", "Mathematics", "Based in", "Shanghai"],
+      lines: ["Who am i", "What am i doing", "What is this website for"],
     },
     detail: {
       template: "text",
       title: "About Me",
-      subtitle: "Mathematics student, explorer of patterns.",
+      subtitle: "Mathematics student, an explorer.",
       sections: [
-        {
-          heading: "Origins",
+{
+          heading: "Who am I",
           paragraphs: [
-            "I am from Wuxi, Jiangsu, China, and currently study Mathematics at Fudan University.",
-            "I have always been drawn to things that are difficult to explain in a single sentence: a beautiful proof, a strange landscape, a game world that feels almost physically real, a piece of music that seems to contain an entire era. I care a great deal about aesthetics, but not only in the conventional sense. I like structure, immersion, and things made with a strong sense of authorship. I am also somewhat suspicious of words like *efficient*, *advanced*, and *modern* when they are used as substitutes for understanding.",
+            "I'm Zening Xuan. I'm currently an undergrad studying math at Fudan University, and I'm planning to stick around to finish my Master's in Data Science here too.",
+            "If I had to describe myself in one word, it would be 'explorer'. I want to spend my life discovering the structure of the world, understanding how technology works, and sharing ideas with others.",
           ],
         },
         {
-          heading: "Places",
+          heading: "What am I Doing",
           paragraphs: [
-            "I have been fortunate to spend time in places very different from home, from Qinghai Lake and Hangzhou to Kyoto, Kobe, San Francisco, Yosemite, Las Vegas, and New York. They are very different places, but travelling has always been less about collecting destinations for me than about seeing how differently the world can look.",
+            "Generally speaking, my days are split into work and play. On the top left of the homepage, you can check out what I'm up to academically and professionally. Down below that, you can get to know more about my personal hobbies and interests.",
           ],
         },
         {
-          heading: "",
+          heading: "What is this Website for",
           paragraphs: [
-            "The rest of this website is probably a better description of who I am than this page could ever be.",
+            "This isn't a portfolio meant to show off my skills—you won't find a list of awards or published papers here. It's really just a place to get to know me better, from the things I've learned to my thoughts and interests. By the way, if the webpage layout looks a bit off, try adjusting your browser's zoom level. Thank you for visiting!",
           ],
         },
       ],
