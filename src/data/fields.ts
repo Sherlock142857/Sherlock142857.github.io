@@ -107,15 +107,27 @@ export const fields: Field[] = [
       ],
       images: [
         {
-          src: "assets/detail/video-games-01.png",
+          src: "assets/detail/er.jpg",
           alt: "Game screenshot placeholder one",
         },
         {
-          src: "assets/detail/video-games-02.png",
+          src: "assets/detail/ds3.jpg",
           alt: "Game screenshot placeholder two",
         },
         {
-          src: "assets/detail/video-games-03.png",
+          src: "assets/detail/ds.jpg",
+          alt: "Game screenshot placeholder three",
+        },
+                {
+          src: "assets/detail/tlou.jpg",
+          alt: "Game screenshot placeholder three",
+        },
+                {
+          src: "assets/detail/gris.jpg",
+          alt: "Game screenshot placeholder three",
+        },
+                {
+          src: "assets/detail/edith.jpg",
           alt: "Game screenshot placeholder three",
         },
       ],
