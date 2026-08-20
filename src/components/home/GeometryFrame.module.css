@@ -44,3 +44,26 @@
   stroke-linejoin: miter;
   vector-effect: non-scaling-stroke;
 }
+
+/* Mobile responsive adjustments */
+@media (max-width: 760px) {
+  .frame {
+    width: 100%;
+    max-width: var(--carousel-image-w);
+    height: auto;
+    aspect-ratio: var(--carousel-image-w) / var(--carousel-image-h);
+  }
+
+  .brackets {
+    width: calc(var(--carousel-image-h) * 2.475);
+    height: calc(var(--carousel-image-h) * 1.21);
+  }
+}
+
+/* Very small screens */
+@media (max-width: 375px) {
+  .brackets {
+    width: calc(var(--carousel-image-h) * 2.3);
+    height: calc(var(--carousel-image-h) * 1.15);
+  }
+}

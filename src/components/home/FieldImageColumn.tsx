@@ -98,43 +98,74 @@ export function FieldImageColumn({
       </div>
       {/* Fixed brackets overlay - uses EXACT same coordinate system as HomeTransition */}
       {bracketState && (
-        <svg
-          className={s.fixedBrackets}
-          aria-hidden="true"
-        >
-          {/* Use same structure as HomeTransition: g with translate to center */}
-          <g transform="translate(0, 0)">
-            {/* Use <line> elements exactly like the animation */}
-            <line
-              className={s.chevron}
-              x1={bracketState.leftTop.x1}
-              y1={bracketState.leftTop.y1}
-              x2={bracketState.leftTop.x2}
-              y2={bracketState.leftTop.y2}
-            />
-            <line
-              className={s.chevron}
-              x1={bracketState.leftBottom.x1}
-              y1={bracketState.leftBottom.y1}
-              x2={bracketState.leftBottom.x2}
-              y2={bracketState.leftBottom.y2}
-            />
-            <line
-              className={s.chevron}
-              x1={bracketState.rightTop.x1}
-              y1={bracketState.rightTop.y1}
-              x2={bracketState.rightTop.x2}
-              y2={bracketState.rightTop.y2}
-            />
-            <line
-              className={s.chevron}
-              x1={bracketState.rightBottom.x1}
-              y1={bracketState.rightBottom.y1}
-              x2={bracketState.rightBottom.x2}
-              y2={bracketState.rightBottom.y2}
-            />
-          </g>
-        </svg>
+        <>
+          <svg
+            className={s.fixedBrackets}
+            aria-hidden="true"
+          >
+            {/* Use same structure as HomeTransition: g with translate to center */}
+            <g transform="translate(0, 0)">
+              {/* Use <line> elements exactly like the animation */}
+              <line
+                className={s.chevron}
+                x1={bracketState.leftTop.x1}
+                y1={bracketState.leftTop.y1}
+                x2={bracketState.leftTop.x2}
+                y2={bracketState.leftTop.y2}
+              />
+              <line
+                className={s.chevron}
+                x1={bracketState.leftBottom.x1}
+                y1={bracketState.leftBottom.y1}
+                x2={bracketState.leftBottom.x2}
+                y2={bracketState.leftBottom.y2}
+              />
+              <line
+                className={s.chevron}
+                x1={bracketState.rightTop.x1}
+                y1={bracketState.rightTop.y1}
+                x2={bracketState.rightTop.x2}
+                y2={bracketState.rightTop.y2}
+              />
+              <line
+                className={s.chevron}
+                x1={bracketState.rightBottom.x1}
+                y1={bracketState.rightBottom.y1}
+                x2={bracketState.rightBottom.x2}
+                y2={bracketState.rightBottom.y2}
+              />
+            </g>
+          </svg>
+          {/* Clickable areas for left and right brackets */}
+          <button
+            type="button"
+            className={s.bracketButton}
+            onClick={onActivate}
+            aria-label="Open detail page"
+            style={{
+              position: 'absolute',
+              left: 0,
+              top: '50%',
+              transform: 'translateY(-50%)',
+              width: `${Math.abs(bracketState.leftTop.x2 - bracketState.leftTop.x1) + 40}px`,
+              height: `${bracketState.d}px`,
+            }}
+          />
+          <button
+            type="button"
+            className={s.bracketButton}
+            onClick={onActivate}
+            aria-label="Open detail page"
+            style={{
+              position: 'absolute',
+              right: 0,
+              top: '50%',
+              transform: 'translateY(-50%)',
+              width: `${Math.abs(bracketState.rightTop.x2 - bracketState.rightTop.x1) + 40}px`,
+              height: `${bracketState.d}px`,
+            }}
+          />
+        </>
       )}
     </div>
   );

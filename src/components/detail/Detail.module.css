@@ -159,5 +159,60 @@
 
   .gallery {
     height: 340px;
+    position: relative;
+    top: 0;
+  }
+}
+
+/* Mobile-specific improvements */
+@media (max-width: 760px) {
+  .page {
+    padding-bottom: 10vh;
+  }
+
+  .header {
+    margin-top: var(--space-md);
+    gap: var(--space-md);
+  }
+
+  .subtitle {
+    max-width: 100%;
+  }
+
+  .main {
+    margin-top: var(--space-lg);
+  }
+
+  .textOnly {
+    gap: var(--space-xl);
+  }
+
+  .split {
+    gap: var(--space-lg);
+  }
+
+  .text {
+    gap: var(--space-xl);
+    max-width: 100%;
+  }
+
+  .gallery {
+    height: 280px;
+    max-height: 60vh;
+  }
+
+  .back {
+    padding: var(--space-xs) 0;
+  }
+}
+
+/* Very small screens */
+@media (max-width: 375px) {
+  .page {
+    padding-bottom: 8vh;
+  }
+
+  .gallery {
+    height: 240px;
   }
 }

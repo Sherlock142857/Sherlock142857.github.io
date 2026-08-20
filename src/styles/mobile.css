@@ -1,0 +1,167 @@
+/**
+ * Mobile-specific responsive enhancements
+ *
+ * This file contains mobile-only styles that enhance the responsive behavior
+ * without modifying desktop layouts. All styles use max-width media queries
+ * to ensure they only apply to mobile devices.
+ */
+
+/* ============================================================================
+ * MOBILE TYPOGRAPHY IMPROVEMENTS
+ * Better readability on small screens
+ * ========================================================================= */
+@media (max-width: 760px) {
+  :root {
+    /* Optimize font sizes for mobile readability */
+    --fs-body: 1rem;
+    --fs-meta: 0.6875rem;
+
+    /* Adjust spacing for compact mobile layout */
+    --space-xl: 2rem;
+    --space-3xl: 3.5rem;
+    --page-pad-y: clamp(1rem, 3vh, 2rem);
+    --gutter: 1.25rem;
+  }
+
+  /* Improve line height for mobile reading */
+  .t-body {
+    line-height: 1.65;
+  }
+
+  /* Make display text more compact on small screens */
+  .t-display {
+    line-height: 1;
+    letter-spacing: -0.025em;
+  }
+
+  .t-title {
+    line-height: 1;
+  }
+}
+
+/* ============================================================================
+ * MOBILE TOUCH TARGETS
+ * Ensure all interactive elements meet minimum touch target size (44x44px)
+ * ========================================================================= */
+@media (max-width: 760px) {
+  button {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  a {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+}
+
+/* ============================================================================
+ * MOBILE SCROLLING IMPROVEMENTS
+ * Smooth scrolling and momentum on touch devices
+ * ========================================================================= */
+@media (max-width: 760px) {
+  body {
+    /* Enable momentum scrolling on iOS */
+    -webkit-overflow-scrolling: touch;
+    /* Prevent overscroll bounce on body */
+    overscroll-behavior-y: none;
+  }
+}
+
+/* ============================================================================
+ * MOBILE SAFE AREAS (for devices with notches)
+ * Respect safe areas on iPhone X and similar devices
+ * ========================================================================= */
+@media (max-width: 760px) {
+  body {
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+  }
+
+  .container {
+    padding-left: max(var(--gutter), env(safe-area-inset-left));
+    padding-right: max(var(--gutter), env(safe-area-inset-right));
+  }
+}
+
+/* ============================================================================
+ * PREVENT TEXT SIZE ADJUSTMENT ON ORIENTATION CHANGE
+ * Prevents iOS from automatically adjusting text size
+ * ========================================================================= */
+@media (max-width: 760px) {
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+}
+
+/* ============================================================================
+ * MOBILE IMAGE OPTIMIZATION
+ * Prevent layout shift and improve loading on mobile
+ * ========================================================================= */
+@media (max-width: 760px) {
+  img {
+    /* Force hardware acceleration */
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+  }
+}
+
+/* ============================================================================
+ * MOBILE FOCUS STATES
+ * Better focus indicators for mobile devices
+ * ========================================================================= */
+@media (max-width: 760px) {
+  :focus-visible {
+    outline: 2px solid var(--color-ink);
+    outline-offset: 2px;
+  }
+}
+
+/* ============================================================================
+ * PREVENT HORIZONTAL OVERFLOW ON MOBILE
+ * Ensure content stays within viewport bounds
+ * ========================================================================= */
+@media (max-width: 760px) {
+  body,
+  html,
+  #root {
+    overflow-x: hidden;
+    max-width: 100vw;
+    width: 100%;
+  }
+
+  * {
+    max-width: 100%;
+  }
+
+  /* Allow specific elements to be wider if needed */
+  svg,
+  img {
+    max-width: none;
+  }
+}
+
+/* ============================================================================
+ * SMALL MOBILE DEVICES (max-width: 375px)
+ * Extra compact layout for very small screens
+ * ========================================================================= */
+@media (max-width: 375px) {
+  :root {
+    --gutter: 1rem;
+    --page-pad-y: 1rem;
+    --space-2xl: 2rem;
+    --space-3xl: 3rem;
+
+    /* Further reduce carousel sizes */
+    --carousel-slot: 9rem;
+    --carousel-title-slot: 5.5rem;
+    --carousel-image-w: 7.5rem;
+    --carousel-image-h: 9rem;
+
+    /* Slightly smaller fonts for very small screens */
+    --fs-body: 0.9375rem;
+  }
+}
+

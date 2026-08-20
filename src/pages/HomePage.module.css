@@ -16,3 +16,24 @@
   justify-content: center;
   min-height: 0;
 }
+
+/* Mobile responsive adjustments */
+@media (max-width: 760px) {
+  .home {
+    padding: var(--page-pad-y) var(--space-md);
+    gap: var(--space-lg);
+    min-height: 100vh;
+  }
+
+  .main {
+    width: 100%;
+  }
+}
+
+/* Very small screens */
+@media (max-width: 375px) {
+  .home {
+    padding: var(--page-pad-y) var(--space-sm);
+    gap: var(--space-md);
+  }
+}

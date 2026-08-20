@@ -130,6 +130,24 @@
   /* Remove vector-effect to match animation brackets exactly */
 }
 
+.bracketButton {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 15;
+  transition: opacity 0.2s ease;
+}
+
+.bracketButton:hover {
+  opacity: 0.8;
+}
+
+.bracketButton:focus-visible {
+  outline: 2px solid var(--color-ink);
+  outline-offset: 4px;
+}
+
 /* Metadata column */
 .meta {
   display: flex;
@@ -168,17 +186,66 @@
     grid-template-columns: 1fr;
     justify-items: center;
     gap: var(--space-lg);
+    padding: 0;
+  }
+
+  .titleColumn {
+    height: calc(7 * var(--carousel-title-slot));
+    width: 100%;
   }
 
   .titleItem {
     justify-content: center;
     text-align: center;
     transform-origin: center center;
+    padding: 0 var(--space-sm);
+    white-space: normal;
+    word-break: break-word;
+  }
+
+  .imageColumn {
+    width: 100%;
+    max-width: min(85vw, var(--carousel-image-h) * 2.475);
+  }
+
+  .fixedBrackets {
+    width: 100%;
+    max-width: min(85vw, var(--carousel-image-h) * 2.475);
   }
 
   .meta {
     justify-self: center;
     text-align: center;
+    width: 100%;
+    padding: 0 var(--space-md);
+  }
+
+  .metaLine {
+    white-space: normal;
+    text-align: center;
+  }
+}
+
+/* Very small screens - further compact */
+@media (max-width: 375px) {
+  .carousel {
+    gap: var(--space-md);
+  }
+
+  .titleItem {
+    padding: 0 var(--space-xs);
+  }
+
+  .imageColumn {
+    max-width: min(90vw, var(--carousel-image-h) * 2.475);
+  }
+
+  .fixedBrackets {
+    max-width: min(90vw, var(--carousel-image-h) * 2.475);
+  }
+
+  .meta {
+    padding: 0 var(--space-sm);
   }
 }
 

@@ -42,3 +42,33 @@
 .contact:hover {
   opacity: 0.6;
 }
+
+/* Mobile responsive adjustments */
+@media (max-width: 760px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-md);
+  }
+
+  .identity {
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .line {
+    white-space: normal;
+    word-break: break-word;
+  }
+}
+
+/* Very small screens */
+@media (max-width: 375px) {
+  .name {
+    font-size: 1.125rem;
+  }
+
+  .line {
+    font-size: 0.6875rem;
+  }
+}
